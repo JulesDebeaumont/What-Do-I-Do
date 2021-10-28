@@ -1,4 +1,4 @@
-<div id="app-main">
+<div id="app-main" [@routeAnimations]="prepareRoute(outlet)">
     <app-footer></app-footer>
-    <router-outlet></router-outlet>
+    <router-outlet #outlet="outlet"></router-outlet>
 </div>

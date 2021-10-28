@@ -1,13 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
+import { slideInAnimation } from 'src/app/animations/slideInAnimation';
 import { passwordMatchValidator } from './registerFormValidator'
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  styleUrls: ['./register.component.scss'],
+  animations: [
+    slideInAnimation
+  ]
 })
+
 export class RegisterComponent implements OnInit {
 
   registerForm: FormGroup = this.formBuilder.group({
@@ -46,6 +51,7 @@ export class RegisterComponent implements OnInit {
 
   onPasswordInput() {
     if (this.newPassword?.hasError('passwordMismatch'))
+      // ???? Si y'a une erreur on met une erreur ?
       this.passwordConfirm?.setErrors([{ 'passwordMismatch': true }]);
     else
       this.passwordConfirm?.setErrors(null);
