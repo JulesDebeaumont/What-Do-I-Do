@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { passwordMatchValidator } from './registerFormValidator'
 
@@ -11,27 +11,33 @@ import { passwordMatchValidator } from './registerFormValidator'
 export class RegisterComponent implements OnInit {
 
   registerForm: FormGroup = this.formBuilder.group({
-    email: ['', [
+    'email': new FormControl('', [
       Validators.required,
       Validators.email
-    ]],
+    ]),
 
     // https://angular.io/guide/form-validation#cross-field-validation
     // Validation du password
     newPassword: this.formBuilder.group({
-      password: ['', [
+      'password': new FormControl('', [
         Validators.required,
-        Validators.minLength(8),
-        Validators.maxLength(255)
-      ]],
-      passwordConfirm: ['', [
+        Validators.minLength(8)
+      ]),
+      'passwordConfirm': new FormControl('', [
         Validators.required
-      ]]
+      ])
     }, { validators: passwordMatchValidator })
   })
 
   hidePassword: boolean = true
   hidePasswordConfirm: boolean = true
+
+  // Getters pour html plus propre
+  get email() { return this.registerForm.get('email') }
+  get newPassword() { return this.registerForm.get('newPassword') }
+  get password() { return this.registerForm.get('newPassword.password') }
+  get passwordConfirm() { return this.registerForm.get('newPassword.passwordConfirm') }
+
 
   constructor(private formBuilder: FormBuilder) { }
 
