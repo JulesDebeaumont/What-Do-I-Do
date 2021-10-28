@@ -1,0 +1,29 @@
+#register {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#register-form,  #register-form > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.mat-form-field {
+    padding-bottom: 30px;
+}
+
+.back-to-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    font-size: 1.2em;
+}
+
+.back-to-login > button {
+    margin-left: 5px;
+    font-size: 1.1em;
+}

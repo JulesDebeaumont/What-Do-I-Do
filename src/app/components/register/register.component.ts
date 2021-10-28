@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
-import { FormBuilder, FormArray } from '@angular/forms';
+import { FormGroup, Validators } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { passwordMatchValidator } from './registerFormValidator'
 
 @Component({
@@ -10,7 +10,7 @@ import { passwordMatchValidator } from './registerFormValidator'
 })
 export class RegisterComponent implements OnInit {
 
-  registerForm = this.formBuilder.group({
+  registerForm: FormGroup = this.formBuilder.group({
     email: ['', [
       Validators.required,
       Validators.email
@@ -30,28 +30,12 @@ export class RegisterComponent implements OnInit {
     }, { validators: passwordMatchValidator })
   })
 
-  hidePassword = true
-  hidePasswordConfirm = true
-
+  hidePassword: boolean = true
+  hidePasswordConfirm: boolean = true
 
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
   }
-
-
-
-  /**
-   * Error message for email input
-   * @returns {string} Message to display
-   */
-  getErrorMessageEmail(): string {
-    if (this.registerForm.value('email').hasError('required')) {
-      return 'You must enter a value'
-    }
-
-    return this.registerForm.value('email').hasError('email') ? 'Not a valid email' : ''
-  }
-
 
 }
