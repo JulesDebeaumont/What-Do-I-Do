@@ -10,13 +10,33 @@ import { FormControl, Validators } from '@angular/forms';
 export class LoginComponent implements OnInit {
 
   email = new FormControl('', [Validators.required, Validators.email])
+  password = new FormControl('', [Validators.required])
 
-  getErrorMessage() {
+  hidePassword = true
+
+  /**
+   * Error message for email input
+   * @returns {string} Message to display
+   */
+  getErrorMessageEmail(): string {
     if (this.email.hasError('required')) {
       return 'You must enter a value'
     }
 
     return this.email.hasError('email') ? 'Not a valid email' : ''
+  }
+
+  
+  /**
+   * Error message for password input
+   * @returns {string} Message to display
+   */
+  getErrorMessagePassword(): string {
+    if (this.password.hasError('required')) {
+      return 'You must enter a value'
+    }
+
+    return ''
   }
 
   constructor() { }

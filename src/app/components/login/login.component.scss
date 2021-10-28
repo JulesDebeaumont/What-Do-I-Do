@@ -3,5 +3,27 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #ffffff10;
+}
+
+#login-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.mat-form-field {
+    padding-bottom: 20px;
+}
+
+.first-time {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    font-size: 1.2em;
+}
+
+.first-time > a {
+    margin-left: 5px;
+    font-size: 1.1em;
 }
