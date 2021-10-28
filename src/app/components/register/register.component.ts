@@ -44,4 +44,17 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onPasswordInput() {
+    if (this.newPassword?.hasError('passwordMismatch'))
+      this.passwordConfirm?.setErrors([{ 'passwordMismatch': true }]);
+    else
+      this.passwordConfirm?.setErrors(null);
+  }
+
+  onSubmit(): void {
+    if (this.registerForm.valid) {
+      console.log('yes!')
+    }
+  }
+
 }

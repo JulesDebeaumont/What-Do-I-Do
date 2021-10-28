@@ -4,7 +4,7 @@
 </div>
 
 <div id="register">
-    <form id="register-form" [formGroup]="registerForm">
+    <form id="register-form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
 
         <mat-form-field appearance="fill">
             <mat-label>Enter your email</mat-label>
@@ -21,7 +21,7 @@
         <div formGroupName="newPassword">
             <mat-form-field appearance="fill">
                 <mat-label>Enter a password</mat-label>
-                <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password">
+                <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password" (input)="onPasswordInput()">
                 <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword"
                     [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
                     <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -34,7 +34,7 @@
 
             <mat-form-field appearance="fill">
                 <mat-label>Confirm password</mat-label>
-                <input matInput [type]="hidePasswordConfirm ? 'password' : 'text'" formControlName="passwordConfirm">
+                <input matInput [type]="hidePasswordConfirm ? 'password' : 'text'" formControlName="passwordConfirm" (input)="onPasswordInput()">
                 <button mat-icon-button matSuffix (click)="hidePasswordConfirm = !hidePasswordConfirm"
                     [attr.aria-label]="'Hide password confirmation'" [attr.aria-pressed]="hidePasswordConfirm">
                     <mat-icon>{{hidePasswordConfirm ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -50,7 +50,7 @@
         </div>
 
 
-        <button mat-raised-button color="primary" class="mat-headline">Register</button>
+        <button mat-raised-button color="primary" class="mat-headline" type="submit" >Register</button>
 
     </form>
 </div>
