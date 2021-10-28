@@ -6,13 +6,13 @@ import { RegisterComponent } from './components/register/register.component';
 
 const routes: Routes = [
   {
-    path: '', component: HomeComponent, data: { animation: 'AboutPage' }
+    path: '', component: HomeComponent, data: { animation: 'FadeOut' }
   },
   {
-    path: 'login', component: LoginComponent,  data: { animation: 'HomePage' }
+    path: 'login', component: LoginComponent,  data: { animation: 'FadeIn' }
   },
   {
-    path: 'register', component: RegisterComponent,  data: { animation: 'AboutPage' }
+    path: 'register', component: RegisterComponent,  data: { animation: 'FadeOut' }
   },
   {
     path: 'password-reset', component: HomeComponent
