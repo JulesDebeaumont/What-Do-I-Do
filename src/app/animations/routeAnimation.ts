@@ -1,6 +1,6 @@
 import { animate, query, style, transition, trigger } from "@angular/animations";
 
-export const slideInAnimation =
+export const fadeInAnimation =
   // Nom du trigger pour le app.component.html
   trigger('routeAnimations', [
 

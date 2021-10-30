@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
-import { slideInAnimation } from './animations/slideInAnimation';
+import { fadeInAnimation } from './animations/routeAnimation';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   animations: [
-    slideInAnimation
+    fadeInAnimation
   ]
 })
 

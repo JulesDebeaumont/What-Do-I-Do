@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { slideInAnimation } from 'src/app/animations/slideInAnimation';
+import { fadeInAnimation } from 'src/app/animations/routeAnimation';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
   animations: [
-    slideInAnimation
+    fadeInAnimation
   ]
 })
 

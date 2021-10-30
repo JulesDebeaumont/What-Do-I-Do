@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { slideInAnimation } from 'src/app/animations/slideInAnimation';
+import { fadeInAnimation } from 'src/app/animations/routeAnimation';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
   animations: [
-    slideInAnimation
+    fadeInAnimation
   ]
 })
 

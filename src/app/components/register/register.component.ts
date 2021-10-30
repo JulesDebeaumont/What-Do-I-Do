@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
-import { slideInAnimation } from 'src/app/animations/slideInAnimation';
+import { fadeInAnimation } from 'src/app/animations/routeAnimation';
 import { passwordMatchValidator } from './registerFormValidator'
 
 @Component({
@@ -9,7 +9,7 @@ import { passwordMatchValidator } from './registerFormValidator'
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
   animations: [
-    slideInAnimation
+    fadeInAnimation
   ]
 })
 
