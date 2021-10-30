@@ -23,7 +23,7 @@
     padding-bottom: 30px;
 }
 
-.back-to-login {
+.back-to-login, .back-to-home {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -31,7 +31,7 @@
     font-size: 1.2em;
 }
 
-.back-to-login > button {
+.back-to-login > button, .back-to-home > button {
     margin-left: 5px;
     font-size: 1.1em;
 }

@@ -1,5 +1,8 @@
-<div id="app-main" [@routeAnimations]="prepareRoute(outlet)">
-    <h1 *ngIf="isLoggedOut()">OK</h1>
+<!-- 
+    routeAnimations is equal to the trigger name
+    https://www.techiediaries.com/angular-router-animations/
+ -->
+<div id="app-main" [@routeAnimations]="outlet.isActivated ? outlet.activatedRoute : ''">
     <router-outlet #outlet="outlet"></router-outlet>
     <app-footer></app-footer>
 </div>

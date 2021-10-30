@@ -23,7 +23,7 @@
     padding-bottom: 20px;
 }
 
-.first-time {
+.first-time, .back-to-home {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -31,7 +31,7 @@
     font-size: 1.2em;
 }
 
-.first-time > button {
+.first-time > button, .back-to-home > button {
     margin-left: 5px;
     font-size: 1.1em;
 }

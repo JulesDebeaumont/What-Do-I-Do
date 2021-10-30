@@ -19,8 +19,4 @@ export class AppComponent {
     return outlet?.activatedRouteData?.animation
   }
 
-  isLoggedOut() : boolean {
-    return this.router.url === '/login' || this.router.url === '/register'
-  }
-
 }
