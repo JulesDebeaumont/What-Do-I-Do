@@ -13,8 +13,11 @@ import { fadeInAnimation } from './animations/routeAnimation';
 
 export class AppComponent {
 
-  constructor(public router: Router) { }
+  constructor(
+    public router: Router
+  ) { }
 
+  // Route animation
   prepareRoute(outlet: RouterOutlet): string | void {
     return outlet?.activatedRouteData?.animation
   }

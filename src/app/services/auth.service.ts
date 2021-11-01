@@ -9,13 +9,13 @@ import { catchError } from 'rxjs/operators';
 
 export class AuthService {
 
-  httpOptions: object = {
+  private httpOptions: object = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
     })
   };
+  private urlAPI: string = 'http://localhost:8000/api';
 
-  urlAPI: string = 'http://localhost:8000/api';
 
   constructor(private http: HttpClient) { }
 
@@ -39,7 +39,7 @@ export class AuthService {
    * @returns 
    */
   register(registerData: object): Observable<any> {
-    return this.http.post(this.urlAPI + 'register',registerData, this.httpOptions)
+    return this.http.post(this.urlAPI + 'register', registerData, this.httpOptions)
       .pipe(
         catchError(this.handleError)
       )
