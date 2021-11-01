@@ -8,14 +8,15 @@ export const fadeInAnimation =
     transition('* => *', [
 
       // Première action pour placer le :enter et le :leave au même endroit en position absolue
-      query(':enter, :leave', [
+      query(":enter, :leave", [
         style({
           position: 'absolute',
           top: 0,
           left: 0,
           width: '100%'
         })
-      ]),
+      ],
+        { optional: true }),
 
       // Deuxième action pour mettre uniquement la vue qui entre en transparent
       query(
