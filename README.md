@@ -1,6 +1,7 @@
 # WhatDoIDo
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.10.
+JWT setup from https://github.com/bezkoder/angular-11-jwt-authentication
 
 ## Development server
 

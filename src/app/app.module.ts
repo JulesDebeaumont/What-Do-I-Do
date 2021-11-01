@@ -4,9 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-// in-memory-web api (fake back-end): npm install angular-in-memory-web-api --save
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './services/in-memory-data-service.service';
 // components
 import { AppComponent } from './app.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -40,13 +37,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
-    MatIconModule,
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, {
-        dataEncapsulation: true,
-        passThruUnknownUrl: false // set true for real db
-      }
-    )
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
