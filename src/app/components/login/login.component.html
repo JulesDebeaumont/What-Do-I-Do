@@ -3,7 +3,10 @@
 </div>
 
 <div id="login">
-    <form id="login-form">
+    <form id="login-form" (ngSubmit)="onSubmit()">
+        <mat-error *ngIf="errorMessage">{{errorMessage}}</mat-error>
+
+
         <mat-form-field appearance="fill">
             <mat-label>Enter your email</mat-label>
             <input matInput [formControl]="email" required color="primary">
@@ -17,10 +20,9 @@
                 [attr.aria-pressed]="hidePassword">
                 <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
             </button>
-            <mat-error *ngIf="password.invalid">{{getErrorMessagePassword()}}</mat-error>
         </mat-form-field>
 
-        <button mat-raised-button color="primary" class="mat-headline">Log in</button>
+        <button mat-raised-button color="primary" class="mat-headline" type="submit">Log in</button>
         <button mat-stroked-button color="primary" class="mat-headline" routerLink="/register">Forgot my
             password</button>
     </form>

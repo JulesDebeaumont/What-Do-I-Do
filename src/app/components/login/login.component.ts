@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { fadeInAnimation } from 'src/app/animations/routeAnimation';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -14,13 +16,24 @@ import { fadeInAnimation } from 'src/app/animations/routeAnimation';
 export class LoginComponent implements OnInit {
 
   email = new FormControl('', [Validators.required, Validators.email])
-  password = new FormControl('', [Validators.required])
-
+  password = new FormControl('')
   hidePassword = true
+  errorMessage!: string
+
+  constructor(
+    private authService: AuthService,
+    private router: Router
+  ) {
+    if (this.authService.isLoggedIn()) {
+      this.router.navigateByUrl('/');
+    }
+  }
+
+  ngOnInit(): void {
+  }
 
   /**
    * Error message for email input
-   * @returns {string} Message to display
    */
   getErrorMessageEmail(): string {
     if (this.email.hasError('required')) {
@@ -30,22 +43,24 @@ export class LoginComponent implements OnInit {
     return this.email.hasError('email') ? 'Not a valid email' : ''
   }
 
-  
+
   /**
-   * Error message for password input
-   * @returns {string} Message to display
+   * Submit login form and save jwt if success
    */
-  getErrorMessagePassword(): string {
-    if (this.password.hasError('required')) {
-      return 'You must enter a value'
-    }
+  onSubmit(): void {
+    this.authService.login({
+      email: this.email.value,
+      password: this.password.value
+    })
+      .subscribe((response) => {
 
-    return ''
-  }
-
-  constructor() { }
-
-  ngOnInit(): void {
+      }, (error) => {
+        if (error.status === 0) {
+          this.errorMessage = 'An internal error has occured'
+        } else {
+          this.errorMessage = 'Email or password is incorrect.'
+        }
+      })
   }
 
 }

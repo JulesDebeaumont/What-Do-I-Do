@@ -23,6 +23,8 @@ export function tokenGetter() {
   return localStorage.getItem("access_token");
 }
 
+const apiUrl = "//localhost:8000/api"
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,8 +50,9 @@ export function tokenGetter() {
         tokenGetter: tokenGetter,
         allowedDomains: ["localhost:8000"],
         disallowedRoutes: [
-          "//localhost:8000/api/login",
-          "//localhost:8000/api/register"
+          `${apiUrl}/login`,
+          `${apiUrl}/register`,
+          `${apiUrl}/password-reset`
       ],
       },
     })
