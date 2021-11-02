@@ -3,30 +3,27 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
+const urlAPI: string = 'http://localhost:8000/api';
+const httpOptions: object = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json'
+  })
+};
+
 @Injectable({
   providedIn: 'root'
 })
 
 export class AuthService {
 
-  private httpOptions: object = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json'
-    })
-  };
-  private urlAPI: string = 'http://localhost:8000/api';
-
-
   constructor(private http: HttpClient) { }
 
 
   /**
-   * POST Log in to the server
-   * @param loginData Object with email & password
-   * @returns 
+   * POST - Log in
    */
   login(loginData: object): Observable<any> {
-    return this.http.post(this.urlAPI + 'login', loginData, this.httpOptions)
+    return this.http.post(urlAPI + '/login', loginData, httpOptions)
       .pipe(
         catchError(this.handleError)
       )
@@ -34,12 +31,10 @@ export class AuthService {
 
 
   /**
-   * POST Register to the server
-   * @param registerData Object with email & password
-   * @returns 
+   * POST - Register
    */
   register(registerData: object): Observable<any> {
-    return this.http.post(this.urlAPI + 'register', registerData, this.httpOptions)
+    return this.http.post(urlAPI + '/register', registerData, httpOptions)
       .pipe(
         catchError(this.handleError)
       )
@@ -47,20 +42,27 @@ export class AuthService {
 
 
   /**
-   * Error handler https://angular.io/guide/http#getting-error-details
-   * @param error The error
-   * @returns Observable that emits no item
+   * POST - Refresh token
+   */
+  refreshToken(token: string) {
+    return this.http.post(urlAPI + '/refreshtoken', {
+      refreshToken: token
+    }, httpOptions);
+  }
+
+
+  /**
+   * Error handler
+   * https://angular.io/guide/http#getting-error-details
    */
   private handleError(error: HttpErrorResponse): Observable<never> {
-    // A client-side or network error occurred.
-    if (error.status === 0) {
+    if (error.status === 0) // A client-side or network error occurred.
+    {
       console.error('An error occurred:', error.error);
-      // The backend returned an unsuccessful response code.
     } else {
       console.error(
         `Backend returned code ${error.status}, body was: `, error.error);
     }
-    // Return an observable with a user-facing error message.
     return throwError(
       'Something bad happened; please try again later.');
   }
