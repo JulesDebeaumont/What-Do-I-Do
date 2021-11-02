@@ -35,8 +35,7 @@ export class AuthService {
         map((response: any) => {
           localStorage.setItem(this.TOKEN_KEY, response.token)
           this.router.navigateByUrl('/home')
-        }),
-        catchError(this.handleError)
+        })
       )
   }
 
@@ -50,8 +49,7 @@ export class AuthService {
         map((response: any) => {
           localStorage.setItem(this.TOKEN_KEY, response.token)
           this.router.navigateByUrl('/login')
-        }),
-        catchError(this.handleError)
+        })
       )
   }
 
@@ -63,9 +61,6 @@ export class AuthService {
     return this.http.post(environment.apiUrl + '/refreshtoken', {
       refreshToken: token
     }, this.httpOptions)
-      .pipe(
-        catchError(this.handleError)
-      )
   }
 
 
@@ -82,6 +77,7 @@ export class AuthService {
       return false;
     }
   }
+
 
   /**
    * Get JWT
@@ -102,6 +98,7 @@ export class AuthService {
 
 
   /**
+   * UNUSED -> de la même manière que les thunks en React, on gérera les erreurs directement dans les composants
    * Error handler
    * https://angular.io/guide/http#getting-error-details
    */

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 import { fadeInAnimation } from 'src/app/animations/routeAnimation';
+import { AuthService } from 'src/app/services/auth.service';
 import { passwordMatchValidator } from './registerFormValidator'
 
 @Component({
@@ -33,9 +35,10 @@ export class RegisterComponent implements OnInit {
       ])
     }, { validators: passwordMatchValidator })
   })
-
   hidePassword: boolean = true
   hidePasswordConfirm: boolean = true
+  errorMessage!: string
+
 
   // Getters pour html plus propre
   get email() { return this.registerForm.get('email') }
@@ -44,10 +47,20 @@ export class RegisterComponent implements OnInit {
   get passwordConfirm() { return this.registerForm.get('newPassword.passwordConfirm') }
 
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ) {
+    if (this.authService.isLoggedIn()) {
+      this.router.navigateByUrl('/');
+    }
+  }
+
 
   ngOnInit(): void {
   }
+
 
   onPasswordInput() {
     if (this.newPassword?.hasError('passwordMismatch'))
@@ -57,9 +70,23 @@ export class RegisterComponent implements OnInit {
       this.passwordConfirm?.setErrors(null);
   }
 
+
   onSubmit(): void {
     if (this.registerForm.valid) {
-      console.log('yes!')
+      const userData = {
+        email: this.registerForm.get('email')?.value,
+        password: this.registerForm.get('password')?.value
+      }
+      this.authService.register(userData)
+        .subscribe((response) => {
+
+        }, (error) => {
+          if (error.status === 0) {
+            this.errorMessage = 'An internal error has occured'
+          } else {
+            this.errorMessage = error.message
+          }
+        })
     }
   }
 

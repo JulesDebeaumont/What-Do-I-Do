@@ -32,9 +32,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  /**
-   * Error message for email input
-   */
+
   getErrorMessageEmail(): string {
     if (this.email.hasError('required')) {
       return 'You must enter a value'
@@ -44,9 +42,6 @@ export class LoginComponent implements OnInit {
   }
 
 
-  /**
-   * Submit login form and save jwt if success
-   */
   onSubmit(): void {
     this.authService.login({
       email: this.email.value,
