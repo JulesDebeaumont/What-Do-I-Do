@@ -6,7 +6,6 @@
     <form id="login-form" (ngSubmit)="onSubmit()">
         <mat-error *ngIf="errorMessage">{{errorMessage}}</mat-error>
 
-
         <mat-form-field appearance="fill">
             <mat-label>Enter your email</mat-label>
             <input matInput [formControl]="email" required color="primary">
@@ -23,15 +22,15 @@
         </mat-form-field>
 
         <button mat-raised-button color="primary" class="mat-headline" type="submit">Log in</button>
-        <button mat-stroked-button color="primary" class="mat-headline" routerLink="/register">Forgot my
+        <button mat-stroked-button color="primary" class="mat-headline" type="button" routerLink="/home/reset-password">Forgot my
             password</button>
     </form>
 </div>
 
 <div class="first-time">Is that your first time ?
-    <button mat-button color="accent" routerLink="/register">Register</button>
+    <button mat-button color="accent" routerLink="/home/register">Register</button>
 </div>
 
 <div class="back-to-home">
-    <button mat-button color="accent" routerLink="/">Home</button>
+    <button mat-button color="accent" routerLink="/home">Home</button>
 </div>

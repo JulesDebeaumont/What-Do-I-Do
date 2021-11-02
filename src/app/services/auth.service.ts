@@ -34,7 +34,7 @@ export class AuthService {
       .pipe(
         map((response: any) => {
           localStorage.setItem(this.TOKEN_KEY, response.token)
-          this.router.navigateByUrl('/home')
+          this.router.navigateByUrl('/dashboard')
         })
       )
   }
@@ -48,7 +48,7 @@ export class AuthService {
       .pipe(
         map((response: any) => {
           localStorage.setItem(this.TOKEN_KEY, response.token)
-          this.router.navigateByUrl('/login')
+          this.router.navigateByUrl('/home/login')
         })
       )
   }
@@ -93,7 +93,7 @@ export class AuthService {
    */
   logout(): void {
     localStorage.clear();
-    this.router.navigateByUrl('/home');
+    // this.router.navigateByUrl('/home');
   }
 
 
