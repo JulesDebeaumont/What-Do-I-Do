@@ -4,14 +4,16 @@
     justify-content: center;
     align-items: center;
     padding: 80px 0px 60px;
+    margin: 0px 20px 20px 20px;
+    text-align: center;
 }
 
 .big-title {
-    margin-bottom: 20px;
+    margin: 20px
 }
 
 .get-started {
-    margin-top: 100px;
+    margin-top: 10%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -20,4 +22,10 @@
 .get-started-button {
     font-size: 1.5em;
     padding: 7px;
+}
+
+@media screen and (max-width: 450px) {
+    .main-title {
+        padding: 20px 0px 60px;
+    }
 }
