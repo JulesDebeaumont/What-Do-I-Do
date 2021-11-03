@@ -9,11 +9,12 @@
 }
 
 .big-title {
-    margin: 20px
+    margin: 20px;
 }
 
 .get-started {
     margin-top: 10%;
+    padding-bottom: calc(10% + 60px);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -27,5 +28,9 @@
 @media screen and (max-width: 450px) {
     .main-title {
         padding: 20px 0px 60px;
+    }
+
+    .get-started {
+        margin-top: 0%;
     }
 }

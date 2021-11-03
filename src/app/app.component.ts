@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router, RouterOutlet } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 import { fadeInAnimation } from './animations/routeAnimation';
 
 @Component({
@@ -13,9 +13,7 @@ import { fadeInAnimation } from './animations/routeAnimation';
 
 export class AppComponent {
 
-  constructor(
-    public router: Router
-  ) { }
+  constructor() { }
 
   // Route animation
   prepareRoute(outlet: RouterOutlet): string | void {

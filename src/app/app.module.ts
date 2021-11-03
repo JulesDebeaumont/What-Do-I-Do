@@ -9,13 +9,13 @@ import { JwtModule } from "@auth0/angular-jwt";
 import { environment } from 'src/environments/environment';
 // components
 import { AppComponent } from './app.component';
-import { FooterComponent } from './components/footer/footer.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 // material
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 export function tokenGetter() {
