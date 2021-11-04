@@ -55,6 +55,14 @@ export class AuthService {
 
 
   /**
+   * POST - Reset Password
+   */
+  resetPassword(userData: object): Observable<any> {
+    return this.http.post(environment.apiUrl, userData, this.httpOptions)
+  }
+
+
+  /**
    * POST - Refresh token
    */
   refreshToken(token: string): Observable<any> {

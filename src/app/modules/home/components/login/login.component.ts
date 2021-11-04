@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { fadeInAnimation } from 'src/app/animations/routeAnimation';
@@ -13,11 +13,11 @@ import { AuthService } from 'src/app/services/auth.service';
   ]
 })
 
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
-  email = new FormControl('', [Validators.required, Validators.email])
-  password = new FormControl('')
-  hidePassword = true
+  email: FormControl = new FormControl('', [Validators.required, Validators.email])
+  password: FormControl = new FormControl('')
+  hidePassword: boolean = true
   errorMessage!: string
 
   constructor(
@@ -27,9 +27,6 @@ export class LoginComponent implements OnInit {
     if (this.authService.isLoggedIn()) {
       this.router.navigateByUrl('/');
     }
-  }
-
-  ngOnInit(): void {
   }
 
 

@@ -6,6 +6,7 @@ import { HomeComponent } from './home.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { PasswordResetComponent } from './components/password-reset/password-reset.component';
 
 
 const routes: Routes = [
@@ -26,8 +27,8 @@ const routes: Routes = [
         component: RegisterComponent
       },
       {
-        path: 'password-reset',
-        component: HomePageComponent
+        path: 'reset-password',
+        component: PasswordResetComponent
       }
     ]
   }
