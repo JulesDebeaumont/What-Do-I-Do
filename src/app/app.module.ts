@@ -15,7 +15,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
-import { FooterComponent } from './components/footer/footer.component';
 
 
 export function tokenGetter() {
@@ -25,7 +24,6 @@ export function tokenGetter() {
 @NgModule({
   declarations: [
     AppComponent,
-    FooterComponent,
     PageNotFoundComponent
   ],
   imports: [

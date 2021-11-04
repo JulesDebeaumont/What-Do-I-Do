@@ -1,0 +1,4 @@
+<div id="home" [@routeAnimations]="outlet.isActivated ? outlet.activatedRoute : ''">
+    <router-outlet #outlet="outlet"></router-outlet>
+</div>
+<app-footer-intro></app-footer-intro>
