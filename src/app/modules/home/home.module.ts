@@ -14,6 +14,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
+import { PasswordResetComponent } from './components/password-reset/password-reset.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { MatIconModule } from '@angular/material/icon';
     HomePageComponent,
     LoginComponent,
     RegisterComponent,
-    FooterIntroComponent
+    FooterIntroComponent,
+    PasswordResetComponent
   ],
   imports: [
     CommonModule,
