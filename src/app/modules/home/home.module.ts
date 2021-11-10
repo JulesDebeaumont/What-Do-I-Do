@@ -11,13 +11,13 @@ import { RegisterComponent } from './components/register/register.component';
 import { FooterIntroComponent } from './components/footer-intro/footer-intro.component';
 import { PasswordResetComponent } from './components/password-reset/password-reset.component';
 // modules
-import { LoadingButtonModule } from '../loading-button/loading-button.module';
 // material
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { LoadingButtonModule } from '../loading-button/loading-button.module';
 
 @NgModule({
   declarations: [
@@ -30,6 +30,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
   ],
   imports: [
     CommonModule,
+    LoadingButtonModule,
     HomeRoutingModule,
     FormsModule,
     ReactiveFormsModule,
@@ -37,8 +38,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,
-    MatProgressSpinnerModule,
-    LoadingButtonModule
+    MatProgressSpinnerModule
   ]
 })
 export class HomeModule { }

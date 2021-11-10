@@ -22,7 +22,7 @@
         </mat-form-field>
 
         <button mat-raised-button color="primary" class="mat-headline" type="submit" [disabled]="this.loading.state">
-            <app-loading-button [title]="'Log in'"></app-loading-button>
+            <app-loading-button [title]="'Log in'" [state]="this.loading.state"></app-loading-button>
         </button>
 
         <button mat-stroked-button color="primary" class="mat-headline" type="button"
