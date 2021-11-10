@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { fadeInAnimation } from 'src/app/animations/routeAnimation';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +13,14 @@ import { fadeInAnimation } from 'src/app/animations/routeAnimation';
 })
 export class HomeComponent {
 
-  constructor() { }
+  constructor(
+    private authService: AuthService,
+    private router: Router
+    ) {
+    if (this.authService.isLoggedIn()) {
+      this.router.navigateByUrl('/dashboard');
+    }
+   }
 
   prepareRoute(outlet: RouterOutlet): string | void {
     return outlet?.activatedRouteData?.animation

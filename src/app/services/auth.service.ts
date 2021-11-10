@@ -47,8 +47,7 @@ export class AuthService {
     return this.http.post(environment.apiUrl + '/register', registerData, this.httpOptions)
       .pipe(
         map((response: any) => {
-          localStorage.setItem(this.TOKEN_KEY, response.token)
-          this.router.navigateByUrl('/home/login')
+          this.login(registerData);
         })
       )
   }
@@ -58,7 +57,7 @@ export class AuthService {
    * POST - Reset Password
    */
   resetPassword(userData: object): Observable<any> {
-    return this.http.post(environment.apiUrl, userData, this.httpOptions)
+    return this.http.post(environment.apiUrl + '/reset/password', userData, this.httpOptions)
   }
 
 
@@ -66,9 +65,9 @@ export class AuthService {
    * POST - Refresh token
    */
   refreshToken(token: string): Observable<any> {
-    return this.http.post(environment.apiUrl + '/refreshtoken', {
+    return this.http.post(environment.apiUrl + '/token/refresh', {
       refreshToken: token
-    }, this.httpOptions)
+    }, this.httpOptions);
   }
 
 
@@ -78,12 +77,8 @@ export class AuthService {
   isLoggedIn(): boolean {
     const token = this.getAuthToken();
     const isExpired = this.tokenDecoder.isTokenExpired(token);
-    if (token && !isExpired) {
-      return true;
-    } else {
-      this.logout();
-      return false;
-    }
+
+    return token && !isExpired;
   }
 
 
@@ -91,8 +86,7 @@ export class AuthService {
    * Get JWT
    */
   getAuthToken(): any {
-    const token = localStorage.getItem(this.TOKEN_KEY);
-    return token;
+    return localStorage.getItem(this.TOKEN_KEY);
   }
 
 
@@ -101,7 +95,7 @@ export class AuthService {
    */
   logout(): void {
     localStorage.clear();
-    // this.router.navigateByUrl('/home');
+    this.router.navigateByUrl('/home');
   }
 
 

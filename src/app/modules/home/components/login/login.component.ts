@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { fadeInAnimation } from 'src/app/animations/routeAnimation';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -22,12 +21,7 @@ export class LoginComponent {
 
   constructor(
     private authService: AuthService,
-    private router: Router
-  ) {
-    if (this.authService.isLoggedIn()) {
-      this.router.navigateByUrl('/');
-    }
-  }
+  ) {}
 
 
   getErrorMessageEmail(): string {

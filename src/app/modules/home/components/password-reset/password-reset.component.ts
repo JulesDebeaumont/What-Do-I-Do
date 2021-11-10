@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { fadeInAnimation } from 'src/app/animations/routeAnimation';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -17,13 +16,8 @@ export class PasswordResetComponent {
   isSent: boolean = false
 
   constructor(
-    private router: Router,
     private authService: AuthService
-  ) {
-    if (this.authService.isLoggedIn()) {
-      this.router.navigateByUrl('/');
-    }
-  }
+  ) {}
 
 
   getErrorMessageEmail(): string {

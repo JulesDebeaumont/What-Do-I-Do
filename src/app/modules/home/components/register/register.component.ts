@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
-import { Router } from '@angular/router';
 import { fadeInAnimation } from 'src/app/animations/routeAnimation';
 import { AuthService } from 'src/app/services/auth.service';
 import { passwordMatchValidator } from './registerFormValidator'
@@ -14,8 +13,7 @@ import { passwordMatchValidator } from './registerFormValidator'
     fadeInAnimation
   ]
 })
-
-export class RegisterComponent implements OnInit {
+export class RegisterComponent {
 
   registerForm: FormGroup = this.formBuilder.group({
     'email': new FormControl('', [
@@ -50,17 +48,7 @@ export class RegisterComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private router: Router
-  ) {
-    if (this.authService.isLoggedIn()) {
-      this.router.navigateByUrl('/');
-    }
-  }
-
-
-  ngOnInit(): void {
-  }
-
+  ) { }
 
   onPasswordInput() {
     if (this.newPassword?.hasError('passwordMismatch'))
@@ -75,7 +63,7 @@ export class RegisterComponent implements OnInit {
     if (this.registerForm.valid) {
       const userData = {
         email: this.registerForm.get('email')?.value,
-        password: this.registerForm.get('password')?.value
+        password: this.registerForm.get('newPassword.password')?.value
       }
       this.authService.register(userData)
         .subscribe((response) => {
