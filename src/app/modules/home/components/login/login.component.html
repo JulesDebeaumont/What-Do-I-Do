@@ -21,12 +21,14 @@
             </button>
         </mat-form-field>
 
-        <button mat-raised-button color="primary" class="mat-headline" type="submit" [disabled]="this.loading.state">
-            <span *ngIf="!this.loading.state; else elseBlock">Log in</span>
-            <ng-template #elseBlock>
-                <mat-progress-spinner class="button-spinner" [color]="'primary'" [mode]="'indeterminate'"></mat-progress-spinner>
-            </ng-template>
+        <button mat-raised-button color="primary" class="mat-headline" type="submit"
+            *ngIf="!this.loading.state; else elseBlock">
+            <span>Log in</span>
         </button>
+
+        <ng-template #elseBlock>
+            <mat-progress-spinner class="button-spinner" [diameter]="60" [color]="'primary'" [mode]="'indeterminate'"></mat-progress-spinner>
+        </ng-template>
 
         <button mat-stroked-button color="primary" class="mat-headline" type="button"
             routerLink="/home/reset-password">Forgot my
