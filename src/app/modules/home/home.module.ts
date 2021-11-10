@@ -9,13 +9,15 @@ import { HomePageComponent } from './components/home-page/home-page.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { FooterIntroComponent } from './components/footer-intro/footer-intro.component';
-import { LoadingComponent } from 'src/app/components/loading/loading.component';
+import { PasswordResetComponent } from './components/password-reset/password-reset.component';
+// modules
+import { LoadingButtonModule } from '../loading-button/loading-button.module';
 // material
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
-import { PasswordResetComponent } from './components/password-reset/password-reset.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -24,8 +26,7 @@ import { PasswordResetComponent } from './components/password-reset/password-res
     LoginComponent,
     RegisterComponent,
     FooterIntroComponent,
-    PasswordResetComponent,
-    LoadingComponent
+    PasswordResetComponent
   ],
   imports: [
     CommonModule,
@@ -35,7 +36,9 @@ import { PasswordResetComponent } from './components/password-reset/password-res
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
-    MatIconModule
+    MatIconModule,
+    MatProgressSpinnerModule,
+    LoadingButtonModule
   ]
 })
 export class HomeModule { }

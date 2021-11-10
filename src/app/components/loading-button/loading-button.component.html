@@ -1,0 +1,9 @@
+<span>
+    <span *ngIf="!this.state; else elseBlock">
+        <span>{{title}}</span>
+    </span>
+
+    <ng-template #elseBlock>
+        <mat-progress-spinner color="primary" mode="indeterminate"></mat-progress-spinner>
+    </ng-template>
+</span>

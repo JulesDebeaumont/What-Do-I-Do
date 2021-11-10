@@ -21,10 +21,12 @@
             </button>
         </mat-form-field>
 
-        <button mat-raised-button color="primary" class="mat-headline" type="submit">Log in</button>
-        <app-loading></app-loading>
+        <button mat-raised-button color="primary" class="mat-headline" type="submit" [disabled]="this.loading.state">
+            <app-loading-button [title]="'Log in'"></app-loading-button>
+        </button>
 
-        <button mat-stroked-button color="primary" class="mat-headline" type="button" routerLink="/home/reset-password">Forgot my
+        <button mat-stroked-button color="primary" class="mat-headline" type="button"
+            routerLink="/home/reset-password">Forgot my
             password</button>
     </form>
 </div>

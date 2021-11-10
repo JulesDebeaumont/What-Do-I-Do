@@ -10,11 +10,14 @@ import { environment } from 'src/environments/environment';
 // components
 import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+// modules
+import { LoadingButtonModule } from './modules/loading-button/loading-button.module';
 // material
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
+// interceptors
 import { HttpInterceptorProviders } from './interceptors';
 
 
@@ -38,6 +41,7 @@ export function tokenGetter() {
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,
+    LoadingButtonModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
