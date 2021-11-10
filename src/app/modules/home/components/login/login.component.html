@@ -22,7 +22,10 @@
         </mat-form-field>
 
         <button mat-raised-button color="primary" class="mat-headline" type="submit" [disabled]="this.loading.state">
-            <app-loading-button [title]="'Log in'" [state]="this.loading.state"></app-loading-button>
+            <span *ngIf="!this.loading.state; else elseBlock">Log in</span>
+            <ng-template #elseBlock>
+                <mat-progress-spinner class="button-spinner" [color]="'primary'" [mode]="'indeterminate'"></mat-progress-spinner>
+            </ng-template>
         </button>
 
         <button mat-stroked-button color="primary" class="mat-headline" type="button"

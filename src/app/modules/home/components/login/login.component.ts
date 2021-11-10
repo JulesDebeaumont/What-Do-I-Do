@@ -19,7 +19,6 @@ export class LoginComponent {
   password: FormControl = new FormControl('');
   hidePassword: boolean = true;
   errorMessage!: string;
-  isSubmited: boolean = false;
 
   constructor(
     private authService: AuthService,

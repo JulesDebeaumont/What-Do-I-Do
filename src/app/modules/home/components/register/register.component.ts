@@ -6,6 +6,7 @@ import { FormBuilder } from '@angular/forms';
 import { fadeInAnimation } from 'src/app/animations/routeAnimation';
 // services
 import { AuthService } from 'src/app/services/auth.service';
+import { LoadingService } from 'src/app/services/loading.service';
 // validators
 import { passwordMatchValidator } from './registerFormValidator'
 
@@ -37,9 +38,10 @@ export class RegisterComponent {
       ])
     }, { validators: passwordMatchValidator })
   })
-  hidePassword: boolean = true
-  hidePasswordConfirm: boolean = true
-  errorMessage!: string
+  hidePassword: boolean = true;
+  hidePasswordConfirm: boolean = true;
+  errorMessage!: string;
+  isSubmited: boolean = false;
 
 
   // Getters pour html plus propre
@@ -52,6 +54,7 @@ export class RegisterComponent {
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
+    public loading: LoadingService
   ) { }
 
   onPasswordInput() {

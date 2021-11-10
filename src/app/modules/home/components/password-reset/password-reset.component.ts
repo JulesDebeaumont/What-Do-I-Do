@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { fadeInAnimation } from 'src/app/animations/routeAnimation';
 import { AuthService } from 'src/app/services/auth.service';
+import { LoadingService } from 'src/app/services/loading.service';
 
 @Component({
   selector: 'app-password-reset',
@@ -11,13 +12,14 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class PasswordResetComponent {
 
-  email: FormControl = new FormControl('', [Validators.required, Validators.email])
-  errorMessage!: string
-  isSent: boolean = false
+  email: FormControl = new FormControl('', [Validators.required, Validators.email]);
+  errorMessage!: string;
+  isSent: boolean = false;
 
   constructor(
-    private authService: AuthService
-  ) {}
+    private authService: AuthService,
+    public loading: LoadingService
+  ) { }
 
 
   getErrorMessageEmail(): string {
@@ -30,17 +32,19 @@ export class PasswordResetComponent {
 
 
   onSubmit(): void {
-    this.authService.resetPassword({
-      email: this.email.value,
-    })
-      .subscribe((response) => {
-        this.isSent = true
-      }, (error) => {
-        if (error.status === 0) {
-          this.errorMessage = 'An internal error has occured'
-        } else {
-          this.errorMessage = 'Email is incorrect.'
-        }
+    if (this.email.valid) {
+      this.authService.resetPassword({
+        email: this.email.value,
       })
+        .subscribe((response) => {
+          this.isSent = true
+        }, (error) => {
+          if (error.status === 0) {
+            this.errorMessage = 'An internal error has occured'
+          } else {
+            this.errorMessage = 'Email is incorrect.'
+          }
+        })
+    }
   }
 }

@@ -49,7 +49,12 @@
         </div>
 
 
-        <button mat-raised-button color="primary" class="mat-headline" type="submit" >Register</button>
+        <button mat-raised-button color="primary" class="mat-headline" type="submit" [disabled]="this.loading.state">
+            <span *ngIf="!this.loading.state; else elseBlock">Register</span>
+            <ng-template #elseBlock>
+                <mat-progress-spinner class="button-spinner" [color]="'primary'" [mode]="'indeterminate'"></mat-progress-spinner>
+            </ng-template>
+        </button>
     </form>
 </div>
 
