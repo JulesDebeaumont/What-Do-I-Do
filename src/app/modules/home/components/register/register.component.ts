@@ -6,7 +6,6 @@ import { FormBuilder } from '@angular/forms';
 import { fadeInAnimation } from 'src/app/animations/routeAnimation';
 // services
 import { AuthService } from 'src/app/services/auth.service';
-import { LoadingService } from 'src/app/services/loading.service';
 // validators
 import { passwordMatchValidator } from './registerFormValidator'
 
@@ -53,7 +52,6 @@ export class RegisterComponent {
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private loading: LoadingService
   ) { }
 
   onPasswordInput() {
@@ -70,15 +68,15 @@ export class RegisterComponent {
       const userData = {
         email: this.registerForm.get('email')?.value,
         password: this.registerForm.get('newPassword.password')?.value
-      }
+      };
       this.authService.register(userData)
         .subscribe((response) => {
 
         }, (error) => {
           if (error.status === 0) {
-            this.errorMessage = 'An internal error has occured'
+            this.errorMessage = 'An internal error has occured';
           } else {
-            this.errorMessage = error.message
+            this.errorMessage = error.message;
           }
         })
     }

@@ -5,11 +5,11 @@ import { Injectable } from '@angular/core';
 })
 export class LoadingService {
 
-  public isLoading: boolean = false;
+  public state: boolean = false;
 
   constructor() { }
 
-  public setIsLoading(bool: boolean): void {
-    this.isLoading = bool;
+  public setIsLoading(state: boolean): void {
+    this.state = state;
   }
 }

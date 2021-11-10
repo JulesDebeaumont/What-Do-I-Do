@@ -5,6 +5,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { LoadingService } from './loading.service';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +23,8 @@ export class AuthService {
   constructor(
     private http: HttpClient,
     private tokenDecoder: JwtHelperService,
-    private router: Router
+    private router: Router,
+    private loading: LoadingService
   ) { }
 
 

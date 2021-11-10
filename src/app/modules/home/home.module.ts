@@ -9,7 +9,8 @@ import { HomePageComponent } from './components/home-page/home-page.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { FooterIntroComponent } from './components/footer-intro/footer-intro.component';
-// meterial
+import { LoadingComponent } from 'src/app/components/loading/loading.component';
+// material
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -23,7 +24,8 @@ import { PasswordResetComponent } from './components/password-reset/password-res
     LoginComponent,
     RegisterComponent,
     FooterIntroComponent,
-    PasswordResetComponent
+    PasswordResetComponent,
+    LoadingComponent
   ],
   imports: [
     CommonModule,
