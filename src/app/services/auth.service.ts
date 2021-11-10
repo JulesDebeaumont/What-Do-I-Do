@@ -47,7 +47,7 @@ export class AuthService {
     return this.http.post(environment.apiUrl + '/register', registerData, this.httpOptions)
       .pipe(
         map((response: any) => {
-          this.login(registerData);
+          this.router.navigateByUrl('/home/login');
         })
       )
   }

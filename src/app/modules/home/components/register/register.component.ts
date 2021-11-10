@@ -1,8 +1,13 @@
+// core
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
+// animations
 import { fadeInAnimation } from 'src/app/animations/routeAnimation';
+// services
 import { AuthService } from 'src/app/services/auth.service';
+import { LoadingService } from 'src/app/services/loading.service';
+// validators
 import { passwordMatchValidator } from './registerFormValidator'
 
 @Component({
@@ -48,6 +53,7 @@ export class RegisterComponent {
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
+    private loading: LoadingService
   ) { }
 
   onPasswordInput() {
