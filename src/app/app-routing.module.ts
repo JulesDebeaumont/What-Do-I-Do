@@ -14,6 +14,10 @@ const routes: Routes = [
     loadChildren: () => import('./modules/home/home.module').then(module => module.HomeModule)
   },
   {
+    path: 'dashboard',
+    loadChildren: () => import('./modules/dashboard/dashboard.module').then(module => module.DashboardModule)
+  },
+  {
     path: '**', component: PageNotFoundComponent
   }
 
