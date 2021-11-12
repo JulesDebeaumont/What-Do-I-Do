@@ -2,12 +2,21 @@
   min-height: 100vh;
 }
 
+#dashboard-page {
+  min-height: 100vh;
+  margin: 30px;
+}
+
 .dashboard-sidenav-container {
   display: flex;
   flex-direction: column;
   position: absolute;
   left: 0;
   right: 0;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../../../assets/triangles.png);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 
 .dashboard-sidenav {
@@ -35,7 +44,7 @@
   z-index: 2;
   background: #222222a0;
   height: 70px;
-  font-size: 1.5em;
+  font-size: 1.6em;
 }
 
 .toolbar-spacer {

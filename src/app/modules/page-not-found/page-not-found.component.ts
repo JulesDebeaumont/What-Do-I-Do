@@ -8,6 +8,8 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class PageNotFoundComponent implements OnInit {
 
+  nextPath: string = this.auth.isLoggedIn() ? 'dashboard' : 'home';
+
   constructor(
     public auth: AuthService
   ) { }
