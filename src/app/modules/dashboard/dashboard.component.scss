@@ -1,6 +1,5 @@
 #dashboard {
   min-height: 100vh;
-  margin-bottom: -60px;
 }
 
 .dashboard-sidenav-container {
@@ -13,12 +12,20 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 200px;
-  background: #222;
+  width: 220px;
+  background: #222222a0;
 }
 
-.dashboard-header {
-  margin-bottom: 10px;
+.dashboard-title {
+  text-align: center;
+  padding: 50px 0px 50px 0px;
+  margin: 5px;
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.dashboard-navlist-icon {
+  padding-right: 20px;
 }
 
 .dashboard-toolbar {
