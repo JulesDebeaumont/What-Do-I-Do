@@ -20,9 +20,10 @@
         <div formGroupName="newPassword">
             <mat-form-field appearance="fill">
                 <mat-label>Enter a password</mat-label>
-                <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password" (input)="onPasswordInput()">
+                <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password"
+                    (input)="onPasswordInput()">
                 <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword"
-                    [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
+                    [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword" type="button">
                     <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
                 </button>
                 <mat-hint align="start">Password should be at least 8 characters long</mat-hint>
@@ -33,9 +34,11 @@
 
             <mat-form-field appearance="fill">
                 <mat-label>Confirm password</mat-label>
-                <input matInput [type]="hidePasswordConfirm ? 'password' : 'text'" formControlName="passwordConfirm" (input)="onPasswordInput()">
+                <input matInput [type]="hidePasswordConfirm ? 'password' : 'text'" formControlName="passwordConfirm"
+                    (input)="onPasswordInput()">
                 <button mat-icon-button matSuffix (click)="hidePasswordConfirm = !hidePasswordConfirm"
-                    [attr.aria-label]="'Hide password confirmation'" [attr.aria-pressed]="hidePasswordConfirm">
+                    [attr.aria-label]="'Hide password confirmation'" [attr.aria-pressed]="hidePasswordConfirm"
+                    type="button">
                     <mat-icon>{{hidePasswordConfirm ? 'visibility_off' : 'visibility'}}</mat-icon>
                 </button>
                 <mat-error *ngIf="passwordConfirm?.hasError('required')">
@@ -55,7 +58,8 @@
         </button>
 
         <ng-template #elseBlock>
-            <mat-progress-spinner class="button-spinner" [diameter]="60" [color]="'primary'" [mode]="'indeterminate'"></mat-progress-spinner>
+            <mat-progress-spinner class="button-spinner" [diameter]="60" [color]="'primary'" [mode]="'indeterminate'">
+            </mat-progress-spinner>
         </ng-template>
     </form>
 </div>
