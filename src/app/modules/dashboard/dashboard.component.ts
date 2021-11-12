@@ -16,9 +16,9 @@ export class DashboardComponent implements OnDestroy {
 
   mobileQuery: MediaQueryList;
   menus: Array<any> = [
-    { title: "Tasks", path: "/dashboard/tasks" },
-    { title: "Activities", path: "/dashboard/activities" },
-    { title: "About", path: "/dashboard/about" }
+    { title: "Tasks", path: "/dashboard/tasks", icon: "event" },
+    { title: "Activities", path: "/dashboard/activities", icon: "bookmarks" },
+    { title: "About", path: "/dashboard/about", icon: "question_mark" }
   ];
   private _mobileQueryListener: () => void;
 
