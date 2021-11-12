@@ -3,5 +3,5 @@
 </div>
 
 <div class="back-to-home">
-    <button mat-raised-button color="accent" routerLink="/">Back to home</button>
+    <button mat-raised-button color="accent" [routerLink]="auth.isLoggedIn() ? '/dashboard' : '/home'">Back to home</button>
 </div>
