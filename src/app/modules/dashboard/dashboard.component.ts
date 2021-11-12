@@ -2,6 +2,7 @@ import { Component, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { fadeInAnimation } from 'src/app/animations/routeAnimation';
 import { MediaMatcher } from '@angular/cdk/layout';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,16 +18,16 @@ export class DashboardComponent implements OnDestroy {
   menus: Array<any> = [
     { title: "Tasks", path: "/dashboard/tasks" },
     { title: "Activities", path: "/dashboard/activities" },
-    { title: "About", path: "/dashboard/about" },
-    { title: "Disconnect", path: "." }
+    { title: "About", path: "/dashboard/about" }
   ];
   private _mobileQueryListener: () => void;
 
   constructor(
     media: MediaMatcher,
-    changeDetectorRef: ChangeDetectorRef
+    changeDetectorRef: ChangeDetectorRef,
+    public auth: AuthService
   ) {
-    this.mobileQuery = media.matchMedia('(max-width: 600px)');
+    this.mobileQuery = media.matchMedia('(min-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
   }
