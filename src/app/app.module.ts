@@ -9,6 +9,7 @@ import { JwtModule } from "@auth0/angular-jwt";
 import { environment } from 'src/environments/environment';
 // components
 import { AppComponent } from './app.component';
+import { PageNotFoundComponent } from './modules/page-not-found/page-not-found.component';
 // material
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -24,7 +25,8 @@ export function tokenGetter() {
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

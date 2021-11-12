@@ -31,4 +31,11 @@
 .dashboard-toolbar {
   position: fixed;
   z-index: 2;
+  background: #222222a0;
+  height: 70px;
+  font-size: 1.5em;
+}
+
+.toolbar-spacer {
+  flex: 1 1 auto;
 }
