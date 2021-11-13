@@ -12,7 +12,15 @@ body {
     margin: 20px auto;
 }
 
-input:-webkit-autofill { 
+input:-webkit-autofill {
     -webkit-background-clip: text;
     -webkit-text-fill-color: rgb(228, 228, 228);
+}
+
+.dashboard-page {
+    margin: 30px;
+}
+
+::-webkit-scrollbar {
+    display: none;
 }
