@@ -5,7 +5,6 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { LoadingService } from './loading.service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,13 +17,13 @@ export class AuthService {
       'Content-Type': 'application/json'
     })
   };
+  public userId: number | null = null;
 
 
   constructor(
     private http: HttpClient,
     private tokenDecoder: JwtHelperService,
     private router: Router,
-    private loading: LoadingService
   ) { }
 
 
@@ -35,8 +34,9 @@ export class AuthService {
     return this.http.post<any>(environment.apiUrl + '/login', loginData, this.httpOptions)
       .pipe(
         map((response: any) => {
-          localStorage.setItem(this.TOKEN_KEY, response.token)
-          this.router.navigateByUrl('/dashboard')
+          localStorage.setItem(this.TOKEN_KEY, response.token);
+          this.userId = response.data.user_id;
+          this.router.navigateByUrl('/dashboard');
         })
       )
   }
@@ -97,6 +97,7 @@ export class AuthService {
    */
   logout(): void {
     localStorage.clear();
+    this.userId = null;
     this.router.navigateByUrl('/home');
   }
 

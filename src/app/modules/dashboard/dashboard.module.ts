@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 // components
 import { DashboardComponent } from './dashboard.component';
+import { TaskListComponent } from './components/task-list/task-list.component';
+import { ActivityListComponent } from './components/activity-list/activity-list.component';
 // materials
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
@@ -11,8 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
-import { TaskListComponent } from './components/task-list/task-list.component';
-import { ActivityListComponent } from './components/activity-list/activity-list.component';
+import { MatCardModule } from '@angular/material/card';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { ActivityListComponent } from './components/activity-list/activity-list.
     MatIconModule,
     MatToolbarModule,
     MatButtonModule,
-    MatMenuModule
+    MatMenuModule,
+    MatCardModule
   ]
 })
 export class DashboardModule { }
