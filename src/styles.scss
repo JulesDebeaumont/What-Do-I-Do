@@ -18,9 +18,23 @@ input:-webkit-autofill {
 }
 
 .dashboard-page-content {
+    display: flex;
+    flex-direction: column;
     padding: 30px;
 }
 
 ::-webkit-scrollbar {
     display: none;
+}
+
+.content-title {
+    text-align: center;
+}
+
+.content-small-title {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.content-list {
+    display: flex;
 }
