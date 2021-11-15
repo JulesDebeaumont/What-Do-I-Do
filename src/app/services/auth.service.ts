@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable, throwError } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -11,13 +11,13 @@ import { environment } from 'src/environments/environment';
 })
 export class AuthService {
 
+  public userId!: number;
   private TOKEN_KEY = 'auth_token';
   private httpOptions: object = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
     })
   };
-  public userId: number | null = null;
 
 
   constructor(
@@ -34,8 +34,7 @@ export class AuthService {
     return this.http.post<any>(environment.apiUrl + '/login', loginData, this.httpOptions)
       .pipe(
         map((response: any) => {
-          localStorage.setItem(this.TOKEN_KEY, response.token);
-          this.userId = response.data.user_id;
+          // localStorage.setItem(this.TOKEN_KEY, response.token);
           this.router.navigateByUrl('/dashboard');
         })
       )
@@ -46,7 +45,7 @@ export class AuthService {
    * POST - Register
    */
   register(registerData: object): Observable<any> {
-    return this.http.post(environment.apiUrl + '/register', registerData, this.httpOptions)
+    return this.http.post<any>(environment.apiUrl + '/register', registerData, this.httpOptions)
       .pipe(
         map((response: any) => {
           this.router.navigateByUrl('/home/login');
@@ -59,7 +58,7 @@ export class AuthService {
    * POST - Reset Password
    */
   resetPassword(userData: object): Observable<any> {
-    return this.http.post(environment.apiUrl + '/reset/password', userData, this.httpOptions)
+    return this.http.post<any>(environment.apiUrl + '/reset/password', userData, this.httpOptions)
   }
 
 
@@ -67,7 +66,7 @@ export class AuthService {
    * POST - Refresh token
    */
   refreshToken(token: string): Observable<any> {
-    return this.http.post(environment.apiUrl + '/token/refresh', {
+    return this.http.post<any>(environment.apiUrl + '/token/refresh', {
       refreshToken: token
     }, this.httpOptions);
   }
@@ -88,7 +87,7 @@ export class AuthService {
    * Get JWT
    */
   getAuthToken(): any {
-    return localStorage.getItem(this.TOKEN_KEY);
+    // return localStorage.getItem(this.TOKEN_KEY);
   }
 
 
@@ -96,8 +95,7 @@ export class AuthService {
    * Logout from the app
    */
   logout(): void {
-    localStorage.clear();
-    this.userId = null;
+    // localStorage.clear();
     this.router.navigateByUrl('/home');
   }
 
