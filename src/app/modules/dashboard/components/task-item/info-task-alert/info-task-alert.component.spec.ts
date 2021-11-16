@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DeleteTaskAlertComponent } from './delete-task-alert.component';
+import { InfoTaskAlertComponent } from './info-task-alert.component';
 
-describe('DeleteTaskAlertComponent', () => {
-  let component: DeleteTaskAlertComponent;
-  let fixture: ComponentFixture<DeleteTaskAlertComponent>;
+describe('InfoTaskAlertComponent', () => {
+  let component: InfoTaskAlertComponent;
+  let fixture: ComponentFixture<InfoTaskAlertComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DeleteTaskAlertComponent ]
+      declarations: [ InfoTaskAlertComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DeleteTaskAlertComponent);
+    fixture = TestBed.createComponent(InfoTaskAlertComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -7,9 +7,9 @@ export interface DeleteTaskAlertData {
 }
 
 @Component({
-  selector: 'app-delete-task-alert',
-  templateUrl: './delete-task-alert.component.html'
+  selector: 'app-info-task-alert',
+  templateUrl: './info-task-alert.component.html'
 })
-export class DeleteTaskAlertComponent{
+export class InfoTaskAlertComponent {
   constructor(@Inject(MAT_DIALOG_DATA) public data: DeleteTaskAlertData) {}
 }

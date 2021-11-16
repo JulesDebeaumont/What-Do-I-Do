@@ -27,6 +27,6 @@
     background-color: rgba(65, 65, 65, 0.322);
 }
 
-.mat-card-actions:not(.mat-card-actions-align-end) .mat-button:first-child {
-    margin: 0 8px;
+.mat-card-actions .mat-button {
+    margin: 0;
 }

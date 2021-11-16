@@ -19,6 +19,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DeleteTaskAlertComponent } from './components/task-item/delete-task-alert/delete-task-alert.component';
+import { InfoTaskAlertComponent } from './components/task-item/info-task-alert/info-task-alert.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { DeleteTaskAlertComponent } from './components/task-item/delete-task-ale
     TaskListComponent,
     ActivityListComponent,
     TaskItemComponent,
-    DeleteTaskAlertComponent
+    DeleteTaskAlertComponent,
+    InfoTaskAlertComponent
   ],
   imports: [
     CommonModule,

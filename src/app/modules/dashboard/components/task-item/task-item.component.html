@@ -13,12 +13,15 @@
     <button mat-button [disabled]="isLoading" (click)="toggleTaskActivation(task)" class="first-action-card"
       [matTooltip]="task.isActivated ? 'Disable' : 'Enable'">
       <mat-icon class="dashboard-navlist-icon" *ngIf="!isLoading; else loadingBlock">
-        {{task.isActivated ? "alarm_off" : "alarm_on"}}
+        {{task.isActivated ? "alarm_on" : "alarm_off"}}
       </mat-icon>
       <ng-template #loadingBlock>
         <mat-progress-spinner [diameter]="25" [color]="'primary'" [mode]="'indeterminate'">
         </mat-progress-spinner>
       </ng-template>
+    </button>
+    <button mat-button (click)="displayInfoTask(task)" *ngIf="task.message">
+      <mat-icon class="dashboard-navlist-icon">info</mat-icon>
     </button>
     <a mat-button routerLink="/dashboard/tasks/${id}" matTooltip="Edit">
       <mat-icon class="dashboard-navlist-icon">edit</mat-icon>

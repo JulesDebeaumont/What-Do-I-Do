@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Task } from 'src/app/models/task.model';
 // components
 import { DeleteTaskAlertComponent } from './delete-task-alert/delete-task-alert.component';
+import { InfoTaskAlertComponent } from './info-task-alert/info-task-alert.component';
 
 
 @Component({
@@ -55,5 +56,13 @@ export class TaskItemComponent implements OnInit {
           })
         }
       });
+  }
+
+  displayInfoTask(task: Task) : void {
+    this.dialog.open(InfoTaskAlertComponent ,{
+      data: {
+        task: task
+      }
+    })
   }
 }
