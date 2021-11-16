@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-// UNUSED
+
 export class LoadingService {
 
   public state: boolean = false;

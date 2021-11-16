@@ -6,6 +6,7 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
 import { TaskListComponent } from './components/task-list/task-list.component';
 import { ActivityListComponent } from './components/activity-list/activity-list.component';
+import { TaskItemComponent } from './components/task-item/task-item.component';
 // materials
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
@@ -21,7 +22,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
   declarations: [
     DashboardComponent,
     TaskListComponent,
-    ActivityListComponent
+    ActivityListComponent,
+    TaskItemComponent
   ],
   imports: [
     CommonModule,

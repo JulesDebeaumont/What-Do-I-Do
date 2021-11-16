@@ -1,0 +1,29 @@
+<mat-card [class.task-disabled]="!task.isActivated" class="task-content">
+  <mat-card-header class="task-header">
+    <mat-card-title>{{task.name}}</mat-card-title>
+    <mat-card-subtitle>{{task.start | date}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <div *ngIf="task.repeatInterval > 0; else noRepeat">Repeat: Every {{task.repeatInterval}} day(s)</div>
+    <ng-template #noRepeat>
+      <div>Repeat: Never</div>
+    </ng-template>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button [disabled]="isLoading" (click)="toggleTaskActivation(task)" class="first-action-card">
+      <mat-icon class="dashboard-navlist-icon" *ngIf="!isLoading; else loadingBlock">
+        {{task.isActivated ? "alarm_off" : "alarm_on"}}
+      </mat-icon>
+      <ng-template #loadingBlock>
+        <mat-progress-spinner [diameter]="25" [color]="'primary'" [mode]="'indeterminate'">
+        </mat-progress-spinner>
+      </ng-template>
+    </button>
+    <a mat-button routerLink="/dashboard/tasks/${id}">
+      <mat-icon class="dashboard-navlist-icon">edit</mat-icon>
+    </a>
+    <a mat-button routerLink="/dashboard/activities/${id}">
+      <mat-icon class="dashboard-navlist-icon">delete</mat-icon>
+    </a>
+  </mat-card-actions>
+</mat-card>

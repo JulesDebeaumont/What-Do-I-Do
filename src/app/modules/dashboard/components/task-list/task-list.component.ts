@@ -13,7 +13,7 @@ import { Task } from 'src/app/models/task.model';
 })
 export class TaskListComponent implements OnInit {
 
-  allUserTasks!: any[];
+  allUserTasks!: Task[];
   errorMessage!: string;
 
   constructor(
@@ -31,16 +31,6 @@ export class TaskListComponent implements OnInit {
           this.errorMessage = `An error has occured: ${error.message}`;
         }
       });
-  }
-
-  
-  toggleTaskActivation(task: Task): void {
-    const toggledTask = { ...task, isActivated : !task.isActivated};
-    this.taskService.patchTask(toggledTask)
-      .subscribe((response) => {
-        console.log(response);
-        task.isActivated = !task.isActivated;
-      })
   }
 
 }
