@@ -39,6 +39,7 @@ export class TaskListComponent implements OnInit {
     this.taskService.patchTask(toggledTask)
       .subscribe((response) => {
         console.log(response);
+        task.isActivated = !task.isActivated;
       })
   }
 

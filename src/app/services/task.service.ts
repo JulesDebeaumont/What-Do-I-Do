@@ -19,6 +19,11 @@ export class TaskService {
       'Content-Type': 'application/json'
     })
   };
+  private httpOptionsPatch: object = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/merge-patch+json'
+    })
+  }
 
   constructor(
     private http: HttpClient,
@@ -54,7 +59,7 @@ export class TaskService {
   * PATCH - Patch task by user
   */
   patchTask(taskData: Task): Observable<any> {
-    return this.http.patch<any>(environment.apiUrl + `${this.apiTasksUrl}/${taskData.id}`, taskData, this.httpOptions);
+    return this.http.patch<any>(environment.apiUrl + `${this.apiTasksUrl}/${taskData.id}`, taskData, this.httpOptionsPatch);
   }
 
 
