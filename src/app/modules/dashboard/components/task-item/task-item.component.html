@@ -10,7 +10,8 @@
     </ng-template>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button [disabled]="isLoading" (click)="toggleTaskActivation(task)" class="first-action-card">
+    <button mat-button [disabled]="isLoading" (click)="toggleTaskActivation(task)" class="first-action-card"
+      [matTooltip]="task.isActivated ? 'Disable' : 'Enable'">
       <mat-icon class="dashboard-navlist-icon" *ngIf="!isLoading; else loadingBlock">
         {{task.isActivated ? "alarm_off" : "alarm_on"}}
       </mat-icon>
@@ -19,11 +20,11 @@
         </mat-progress-spinner>
       </ng-template>
     </button>
-    <a mat-button routerLink="/dashboard/tasks/${id}">
+    <a mat-button routerLink="/dashboard/tasks/${id}" matTooltip="Edit">
       <mat-icon class="dashboard-navlist-icon">edit</mat-icon>
     </a>
-    <a mat-button routerLink="/dashboard/activities/${id}">
+    <button mat-button (click)="deleteTaskWithAlert(task)" matTooltip="Delete">
       <mat-icon class="dashboard-navlist-icon">delete</mat-icon>
-    </a>
+    </button>
   </mat-card-actions>
 </mat-card>

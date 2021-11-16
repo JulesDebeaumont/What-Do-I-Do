@@ -16,6 +16,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatDialogModule } from '@angular/material/dialog';
+import { DeleteTaskAlertComponent } from './components/task-item/delete-task-alert/delete-task-alert.component';
 
 
 @NgModule({
@@ -23,7 +26,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     DashboardComponent,
     TaskListComponent,
     ActivityListComponent,
-    TaskItemComponent
+    TaskItemComponent,
+    DeleteTaskAlertComponent
   ],
   imports: [
     CommonModule,
@@ -35,7 +39,9 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatButtonModule,
     MatMenuModule,
     MatCardModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatTooltipModule,
+    MatDialogModule
   ]
 })
 export class DashboardModule { }

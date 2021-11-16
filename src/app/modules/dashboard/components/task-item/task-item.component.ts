@@ -1,7 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { TaskService } from 'src/app/services/task.service';
+import { MatDialog } from '@angular/material/dialog';
 // models
 import { Task } from 'src/app/models/task.model';
+// components
+import { DeleteTaskAlertComponent } from './delete-task-alert/delete-task-alert.component';
+
 
 @Component({
   selector: 'app-task-item',
@@ -15,7 +19,8 @@ export class TaskItemComponent implements OnInit {
   errorMessageToggle?: string;
 
   constructor(
-    private taskService: TaskService
+    private taskService: TaskService,
+    private dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -35,4 +40,20 @@ export class TaskItemComponent implements OnInit {
       })
   }
 
+  deleteTaskWithAlert(task: Task): void {
+    const dialogRef = this.dialog.open(DeleteTaskAlertComponent, {
+      data: {
+        task: task
+      }
+    });
+    dialogRef.afterClosed()
+      .subscribe((result) => {
+        if (result === "delete") {
+          this.taskService.deleteTask(task.id)
+          .subscribe((response) => {
+            console.log(response);
+          })
+        }
+      });
+  }
 }
