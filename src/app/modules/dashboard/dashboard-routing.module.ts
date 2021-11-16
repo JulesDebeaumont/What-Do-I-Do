@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard.component';
 import { TaskListComponent } from './components/task-list/task-list.component';
 import { ActivityListComponent } from './components/activity-list/activity-list.component';
+import { TaskFormComponent } from './components/task-form/task-form.component';
 
 
 
@@ -15,6 +16,9 @@ const routes: Routes = [
     children: [
       {
         path: '', component: TaskListComponent
+      },
+      {
+        path: 'tasks/new', component: TaskFormComponent
       },
       {
         path: 'activities', component: ActivityListComponent

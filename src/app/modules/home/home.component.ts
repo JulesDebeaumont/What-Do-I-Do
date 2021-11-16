@@ -18,7 +18,7 @@ export class HomeComponent {
     private router: Router
     ) {
     if (this.authService.isLoggedIn()) {
-      this.router.navigateByUrl('/dashboard');
+      this.router.navigateByUrl('/dashboard/tasks');
     }
    }
 

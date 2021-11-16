@@ -4,5 +4,5 @@ export interface Task {
     isActivated: boolean,
     repeatInterval: number,
     start: Date,
-    message: string
+    message?: string
 }

@@ -20,6 +20,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DeleteTaskAlertComponent } from './components/task-item/delete-task-alert/delete-task-alert.component';
 import { InfoTaskAlertComponent } from './components/task-item/info-task-alert/info-task-alert.component';
+import { TaskFormComponent } from './components/task-form/task-form.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { InfoTaskAlertComponent } from './components/task-item/info-task-alert/i
     ActivityListComponent,
     TaskItemComponent,
     DeleteTaskAlertComponent,
-    InfoTaskAlertComponent
+    InfoTaskAlertComponent,
+    TaskFormComponent
   ],
   imports: [
     CommonModule,
