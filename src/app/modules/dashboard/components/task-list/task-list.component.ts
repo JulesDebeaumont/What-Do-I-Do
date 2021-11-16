@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { fadeInAnimation } from 'src/app/animations/routeAnimation';
 // services
 import { TaskService } from 'src/app/services/task.service';
+// models
+import { Task } from 'src/app/models/task.model';
 
 @Component({
   selector: 'app-task-list',
@@ -32,5 +34,12 @@ export class TaskListComponent implements OnInit {
   }
 
   
+  toggleTaskActivation(task: Task): void {
+    const toggledTask = { ...task, isActivated : !task.isActivated};
+    this.taskService.patchTask(toggledTask)
+      .subscribe((response) => {
+        console.log(response);
+      })
+  }
 
 }

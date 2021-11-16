@@ -7,23 +7,28 @@
     <ul class="content-list" *ngIf="allUserTasks; else loadingBlock">
       <li *ngFor="let task of allUserTasks" class="task-card">
         <mat-card [class.task-disabled]="!task.isActivated" class="task-content">
-          <mat-card-header>
+          <mat-card-header class="task-header">
             <mat-card-title>{{task.name}}</mat-card-title>
-            <mat-card-subtitle>{{task.isActivated ? "Enabled" : "Disabled"}}</mat-card-subtitle>
+            <mat-card-subtitle>{{task.start | date}}</mat-card-subtitle>
           </mat-card-header>
           <mat-card-content>
-            <ul>
-              <li>- On: {{task.start | date}}</li>
-              <li>- Repeat: Every {{task.repeatInterval}} day(s)</li>
-              <ng-template #disabledBlock>
-                <li>- Repeat: Never</li>
-              </ng-template>
-              <li>- Message: {{task.message}}</li>
-            </ul>
+            <div *ngIf="task.repeatInterval > 0; else noRepeat">Repeat: Every {{task.repeatInterval}} day(s)</div>
+            <ng-template #noRepeat>
+              <div>Repeat: Never</div>
+            </ng-template>
           </mat-card-content>
           <mat-card-actions>
-            <a mat-button routerLink="/dashboard/tasks/${id}">Edit</a>
-            <a mat-button routerLink="/dashboard/activities/${id}">Delete</a>
+            <button mat-button (click)="toggleTaskActivation(task)">
+              <mat-icon class="dashboard-navlist-icon">
+                {{task.isActivated ? "alarm_off" : "alarm_on"}}
+              </mat-icon>
+            </button>
+            <a mat-button routerLink="/dashboard/tasks/${id}">
+              <mat-icon class="dashboard-navlist-icon">edit</mat-icon>
+            </a>
+            <a mat-button routerLink="/dashboard/activities/${id}">
+              <mat-icon class="dashboard-navlist-icon">delete</mat-icon>
+            </a>
           </mat-card-actions>
         </mat-card>
       </li>
