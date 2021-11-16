@@ -4,8 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { JwtModule, JWT_OPTIONS } from "@auth0/angular-jwt";
 import { HttpClientModule } from '@angular/common/http';
-import { JwtModule } from "@auth0/angular-jwt";
 import { environment } from 'src/environments/environment';
 // components
 import { AppComponent } from './app.component';
@@ -17,11 +17,19 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 // interceptors
 import { HttpInterceptorProviders } from './interceptors';
+// services
+import { CookieStorageService } from './services/cookie-storage.service';
 
 
-export function tokenGetter() {
-  return localStorage.getItem("access_token");
+export function jwtOptionsFactory(cookieStorage: CookieStorageService) {
+  return {
+    tokenGetter: () => {
+      return cookieStorage.getCookie('token');
+    },
+    allowedDomains: [environment.appUrl]
+  }
 }
+
 
 @NgModule({
   declarations: [
@@ -40,14 +48,16 @@ export function tokenGetter() {
     MatInputModule,
     MatIconModule,
     JwtModule.forRoot({
-      config: {
-        tokenGetter: tokenGetter,
-        allowedDomains: [environment.apiUrl]
-      },
+      jwtOptionsProvider: {
+        provide: JWT_OPTIONS,
+        useFactory: jwtOptionsFactory,
+        deps: [CookieStorageService]
+      }
     })
   ],
   providers: [
-    HttpInterceptorProviders
+    HttpInterceptorProviders,
+    CookieStorageService
   ],
   bootstrap: [AppComponent]
 })
