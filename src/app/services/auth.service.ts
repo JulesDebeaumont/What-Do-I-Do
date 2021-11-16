@@ -1,10 +1,12 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+//services
+import { CookieStorageService } from './cookie-storage.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +14,6 @@ import { environment } from 'src/environments/environment';
 export class AuthService {
 
   public userId!: number;
-  private TOKEN_KEY = 'auth_token';
   private httpOptions: object = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
@@ -23,7 +24,8 @@ export class AuthService {
   constructor(
     private http: HttpClient,
     private tokenDecoder: JwtHelperService,
-    private router: Router,
+    private cookieStorage: CookieStorageService,
+    private router: Router
   ) { }
 
 
@@ -34,7 +36,7 @@ export class AuthService {
     return this.http.post<any>(environment.apiUrl + '/login', loginData, this.httpOptions)
       .pipe(
         map((response: any) => {
-          // localStorage.setItem(this.TOKEN_KEY, response.token);
+          this.setUser(response.token, response.refresh_token);
           this.router.navigateByUrl('/dashboard');
         })
       )
@@ -73,21 +75,38 @@ export class AuthService {
 
 
   /**
-   * Check if logged in depending on the jwt, else log out
+   * Check if logged in depending on the token
    */
   isLoggedIn(): boolean {
-    const token = this.getAuthToken();
-    const isExpired = this.tokenDecoder.isTokenExpired(token);
+    const token = this.cookieStorage.getCookie('token');
+    if (token) {
+      return !this.tokenDecoder.isTokenExpired(token);
+    }
 
-    return token && !isExpired;
+    return false;
   }
 
 
   /**
-   * Get JWT
+   * Get userId decoded from token and stored in cookie
    */
-  getAuthToken(): any {
-    // return localStorage.getItem(this.TOKEN_KEY);
+  getUserId(): string {
+    return this.cookieStorage.getCookie('userId');
+  }
+
+
+  /**
+   * Put token and userId in cookie
+   */
+  setUser(token: string, refreshToken: string): void {
+    if (token && refreshToken) {
+      const userId = this.tokenDecoder.decodeToken(token).id;
+
+      this.cookieStorage.setCookie('token', token);
+      this.cookieStorage.setCookie('refresh_token', refreshToken);
+      this.cookieStorage.setCookie('userId', userId);
+      this.userId = userId;
+    }
   }
 
 
@@ -95,13 +114,13 @@ export class AuthService {
    * Logout from the app
    */
   logout(): void {
-    // localStorage.clear();
+    this.cookieStorage.removeAll();
     this.router.navigateByUrl('/home');
   }
 
 
   /**
-   * UNUSED -> de la même manière que les thunks en React, on gérera les erreurs directement dans les composants
+   * UNUSED -> de la même manière que les thunks en React, on gérera les erreurs directement dans les composants ici
    * Error handler
    * https://angular.io/guide/http#getting-error-details
    */

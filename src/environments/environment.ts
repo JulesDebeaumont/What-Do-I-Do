@@ -5,9 +5,11 @@
 export const environment = {
   production: false,
   appName: 'WhatDoIDo',
-  appUrl: 'http://localhost:8000',
   apiUrl: 'http://localhost:8000/api',
-  cookieDuration: 30
+  cookiesOptions: {
+    expires: 3,
+    secure: true
+  }
 };
 
 /*

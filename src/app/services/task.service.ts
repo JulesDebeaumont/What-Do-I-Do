@@ -29,7 +29,7 @@ export class TaskService {
    * GET - Get tasks by user
    */
   getAllUserTasks(): Observable<any> {
-    return this.http.get<any>(environment.apiUrl + `/users/${this.auth.userId}/tasks`, this.httpOptions);
+    return this.http.get<any>(environment.apiUrl + `/users/${this.auth.getUserId()}/tasks`, this.httpOptions);
   }
 
 
@@ -37,7 +37,7 @@ export class TaskService {
   * GET - Get task by user
   */
   getUserTask(taskId: number): Observable<any> {
-    return this.http.get<any>(environment.apiUrl + `/users/${this.auth.userId}/tasks/${taskId}`, this.httpOptions);
+    return this.http.get<any>(environment.apiUrl + `/users/${this.auth.getUserId()}/tasks/${taskId}`, this.httpOptions);
   }
 
 
@@ -45,7 +45,7 @@ export class TaskService {
    * POST - Post task by user
    */
   postUserTask(taskData: Task): Observable<any> {
-    return this.http.post<any>(environment.apiUrl + `/users/${this.auth.userId}/tasks/${taskData.id}`, taskData, this.httpOptions);
+    return this.http.post<any>(environment.apiUrl + `/users/${this.auth.getUserId()}/tasks/${taskData.id}`, taskData, this.httpOptions);
   }
 
 
@@ -53,7 +53,7 @@ export class TaskService {
   * PATCH - Patch task by user
   */
   patchUserTask(taskData: Task): Observable<any> {
-    return this.http.patch<any>(environment.apiUrl + `/users/${this.auth.userId}/tasks/${taskData.id}`, taskData, this.httpOptions);
+    return this.http.patch<any>(environment.apiUrl + `/users/${this.auth.getUserId()}/tasks/${taskData.id}`, taskData, this.httpOptions);
   }
 
 
@@ -61,6 +61,6 @@ export class TaskService {
   * DELETE - Delete task by user
   */
   deleteUserTask(taskId: number): Observable<any> {
-    return this.http.delete<any>(environment.apiUrl + `/users/${this.auth.userId}/tasks/${taskId}`, this.httpOptions);
+    return this.http.delete<any>(environment.apiUrl + `/users/${this.auth.getUserId()}/tasks/${taskId}`, this.httpOptions);
   }
 }

@@ -20,7 +20,7 @@ export class CookieStorageService {
 
   public setCookie(name: string, value: string): void {
     name = `${this.prefix}-${name}`;
-    this.cookie.set(name, value, undefined, '/', environment.appUrl, true, 'Strict');
+    this.cookie.set(name,value, environment.cookiesOptions);
   }
 
   public removeAll() {
