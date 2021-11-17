@@ -51,7 +51,7 @@ export class TaskService {
    * POST - Post task by user
    */
   postTask(taskData: Task): Observable<any> {
-    return this.http.post<Task>(environment.apiUrl + `${this.apiTasksUrl}/${taskData.id}`, taskData, this.httpOptions);
+    return this.http.post<Task>(environment.apiUrl + `${this.apiTasksUrl}`, taskData, this.httpOptions);
   }
 
 

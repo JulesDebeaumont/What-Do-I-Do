@@ -23,15 +23,13 @@
           </mat-error>
         </mat-form-field>
 
-        <mat-checkbox formControlName="isRepeated">Repeat</mat-checkbox>
+        <mat-checkbox formControlName="isRepeated" (input)="toggleRepeatInterval()">Repeat</mat-checkbox>
 
-        <div >
-          <mat-form-field appearance="fill">
-            <mat-label>Repeat every</mat-label>
-            <input matInput formControlName="repeatInterval" color="primary" type="number">
-            <span matSuffix>days</span>
-          </mat-form-field>
-        </div>
+        <mat-form-field appearance="fill">
+          <mat-label>Every</mat-label>
+          <input matInput formControlName="repeatInterval" color="primary" type="number">
+          <span matSuffix>days</span>
+        </mat-form-field>
 
         <mat-form-field appearance="fill" hintLabel="Max 255 characters">
           <mat-label>Message</mat-label>
@@ -45,7 +43,12 @@
             <mat-radio-button value="true">Enable</mat-radio-button>
             <mat-radio-button value="false">Disable</mat-radio-button>
           </mat-radio-group>
+          <mat-error *ngIf="isActivated?.hasError('required')">
+            Please choose
+          </mat-error>
         </div>
+
+        <div *ngIf="errorMessage">{{errorMessage}}</div><!-- TODO handle error message-->
 
         <div class="buttons-form-row">
           <a mat-button color="accent" class="mat-headline" type="button" *ngIf="!isLoading" routerLink="/dashboard">
@@ -56,12 +59,14 @@
             *ngIf="!isLoading; else loadingBlock">
             <span>Save</span>
           </button>
-        </div>
 
-        <ng-template #loadingBlock>
+                  <ng-template #loadingBlock>
           <mat-progress-spinner class="button-spinner" [diameter]="60" [color]="'primary'" [mode]="'indeterminate'">
           </mat-progress-spinner>
         </ng-template>
+        </div>
+
+
       </form>
     </div>
   </div>
