@@ -23,7 +23,7 @@
     <button mat-button (click)="displayInfoTask(task)" *ngIf="task.message">
       <mat-icon class="dashboard-navlist-icon">info</mat-icon>
     </button>
-    <a mat-button routerLink="/dashboard/tasks/${id}" matTooltip="Edit">
+    <a mat-button routerLink="/dashboard/tasks/{{task.id}}/edit" matTooltip="Edit">
       <mat-icon class="dashboard-navlist-icon">edit</mat-icon>
     </a>
     <button mat-button (click)="deleteTaskWithAlert(task)" matTooltip="Delete">

@@ -3,71 +3,77 @@
 
   <div class="content-section">
     <div class="dashboard-form">
-      <form [formGroup]="taskForm" (ngSubmit)="onSubmit()" class="dashboard-form-inputs">
+      <div *ngIf="!isLoading; else isLoadingBlock">
+        <form [formGroup]="taskForm" (ngSubmit)="onSubmit()" class="dashboard-form-inputs">
 
-        <mat-form-field appearance="fill">
-          <mat-label>Name</mat-label>
-          <input matInput formControlName="name" required color="primary">
-          <mat-error *ngIf="name?.hasError('required')">
-            Name is <strong>required</strong>
-          </mat-error>
-        </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name" required color="primary">
+            <mat-error *ngIf="name?.hasError('required')">
+              Name is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
 
-        <mat-form-field appearance="fill">
-          <mat-label>Date</mat-label>
-          <input matInput [min]="minDate" required [matDatepicker]="picker" formControlName="start">
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-          <mat-error *ngIf="start?.hasError('required')">
-            Date is <strong>required</strong>
-          </mat-error>
-        </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Date</mat-label>
+            <input matInput [min]="minDate" required [matDatepicker]="picker" formControlName="start">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="start?.hasError('required')">
+              Date is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
 
-        <mat-checkbox formControlName="isRepeated" (input)="toggleRepeatInterval()">Repeat</mat-checkbox>
+          <mat-checkbox formControlName="isRepeated" (input)="toggleRepeatInterval()">Repeat</mat-checkbox>
 
-        <mat-form-field appearance="fill">
-          <mat-label>Every</mat-label>
-          <input matInput formControlName="repeatInterval" color="primary" type="number">
-          <span matSuffix>days</span>
-        </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Every</mat-label>
+            <input matInput formControlName="repeatInterval" color="primary" type="number">
+            <span matSuffix>days</span>
+          </mat-form-field>
 
-        <mat-form-field appearance="fill" hintLabel="Max 255 characters">
-          <mat-label>Message</mat-label>
-          <textarea matInput #messageInput maxlength="255" formControlName="message" color="primary" rows="3"
-            placeholder="My message.."></textarea>
-          <mat-hint align="end">{{messageInput.value?.length || 0}}/255</mat-hint>
-        </mat-form-field>
+          <mat-form-field appearance="fill" hintLabel="Max 255 characters">
+            <mat-label>Message</mat-label>
+            <textarea matInput #messageInput maxlength="255" formControlName="message" color="primary" rows="3"
+              placeholder="My message.."></textarea>
+            <mat-hint align="end">{{messageInput.value?.length || 0}}/255</mat-hint>
+          </mat-form-field>
 
-        <div class="radio-button-form">
-          <mat-radio-group formControlName="isActivated">
-            <mat-radio-button value="true">Enable</mat-radio-button>
-            <mat-radio-button value="false">Disable</mat-radio-button>
-          </mat-radio-group>
-          <mat-error *ngIf="isActivated?.hasError('required')">
-            Please choose
-          </mat-error>
-        </div>
+          <div class="radio-button-form">
+            <mat-radio-group formControlName="isActivated">
+              <mat-radio-button value="true">Enable</mat-radio-button>
+              <mat-radio-button value="false">Disable</mat-radio-button>
+            </mat-radio-group>
+            <mat-error *ngIf="isActivated?.hasError('required')">
+              Please choose
+            </mat-error>
+          </div>
 
-        <div *ngIf="errorMessage">{{errorMessage}}</div><!-- TODO handle error message-->
+          <div *ngIf="errorMessage">{{errorMessage}}</div><!-- TODO handle error message-->
 
-        <div class="buttons-form-row">
-          <a mat-button color="accent" class="mat-headline" type="button" *ngIf="!isLoading" routerLink="/dashboard">
-            <span>Cancel</span>
-          </a>
+          <div class="buttons-form-row">
+            <a mat-button color="accent" class="mat-headline" type="button" *ngIf="!isLoading" routerLink="/dashboard">
+              <span>Cancel</span>
+            </a>
 
-          <button mat-raised-button color="primary" class="mat-headline" type="submit"
-            *ngIf="!isLoading; else loadingBlock">
-            <span>Save</span>
-          </button>
+            <button mat-raised-button color="primary" class="mat-headline" type="submit"
+              *ngIf="!isLoading; else submitedBlock">
+              <span>Save</span>
+            </button>
 
-                  <ng-template #loadingBlock>
-          <mat-progress-spinner class="button-spinner" [diameter]="60" [color]="'primary'" [mode]="'indeterminate'">
-          </mat-progress-spinner>
-        </ng-template>
-        </div>
+            <ng-template #submitedBlock>
+              <mat-progress-spinner class="button-spinner" [diameter]="60" [color]="'primary'" [mode]="'indeterminate'">
+              </mat-progress-spinner>
+            </ng-template>
+          </div>
 
 
-      </form>
+        </form>
+      </div>
+      <ng-template #isLoadingBlock>
+        <mat-progress-spinner class="button-spinner" [diameter]="250" [color]="'primary'" [mode]="'indeterminate'">
+        </mat-progress-spinner>
+      </ng-template>
     </div>
   </div>
 </div>

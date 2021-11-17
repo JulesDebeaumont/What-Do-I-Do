@@ -14,7 +14,8 @@ export class TaskFormComponent implements OnInit {
 
   taskId?: number;
   isEdit?: boolean;
-  isLoading: boolean = false;
+  isLoading: boolean = false; // for get User
+  isSubmitted: boolean = false; // for patch/post User
   errorMessage?: string;
   minDate: Date = new Date();
   taskForm: FormGroup = this.formBuilder.group({
@@ -88,42 +89,48 @@ export class TaskFormComponent implements OnInit {
           id: response.id,
           name: response.name,
           start: response.start,
-          isActivated: response.isActivated,
+          isActivated: response.isActivated ? "true" : "false",
           repeatInterval: response.repeatInterval,
+          isRepeated: response.repeatInterval !== 0,
           message: response.message
-        })
+        });
+        if (response.repeatInterval !== 0) {
+          this.toggleRepeatInterval();
+        }
+        this.isLoading = false;
       }, (error) => {
         console.log(error.message);
-      }, () => {
         this.isLoading = false;
+      }, () => {
+        // this.isLoading = false;
       })
   }
 
   saveTask(task: Task): void {
-    this.isLoading = true;
+    this.isSubmitted = true;
     this.taskService.postTask(task)
       .subscribe(() => {
-        this.router.navigateByUrl('/dashboard/tasks');
+        this.router.navigateByUrl('/dashboard');
       }, (error) => {
         console.log(error.message);
         this.errorMessage = error.message;
-        this.isLoading = false;
+        this.isSubmitted = false;
       }, () => {
-        // this.isLoading = false; Not working if error ???? // TODO
+        // this.isSubmitted = false; Not working if error ???? // TODO
       })
   }
 
   patchTask(task: Task): void {
-    this.isLoading = true;
+    this.isSubmitted = true;
     this.taskService.patchTask(task)
       .subscribe(() => {
-        this.router.navigateByUrl('/dashboard/tasks');
+        this.router.navigateByUrl('/dashboard');
       }, (error) => {
         console.log(error.message);
         this.errorMessage = error.message;
-        this.isLoading = false;
+        this.isSubmitted = false;
       }, () => {
-        // this.isLoading = false;
+        // this.isSubmitted = false;
       })
   }
 
