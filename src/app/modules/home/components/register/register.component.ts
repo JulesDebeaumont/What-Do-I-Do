@@ -1,7 +1,6 @@
 // core
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { FormBuilder } from '@angular/forms';
+import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 // animations
 import { fadeInAnimation } from 'src/app/animations/routeAnimation';
 // services
@@ -41,7 +40,7 @@ export class RegisterComponent {
   hidePassword: boolean = true;
   hidePasswordConfirm: boolean = true;
   errorMessage!: string;
-  isSubmited: boolean = false;
+  isLoading: boolean = false;
 
 
   // Getters pour html plus propre

@@ -21,6 +21,9 @@ const routes: Routes = [
         path: 'tasks/new', component: TaskFormComponent
       },
       {
+        path: 'tasks/:id/edit', component: TaskFormComponent
+      },
+      {
         path: 'activities', component: ActivityListComponent
       }
     ]

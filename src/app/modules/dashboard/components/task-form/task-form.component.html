@@ -1,5 +1,38 @@
 <div class="dashboard-page-content">
-    <h1 class="mat-display-3 big-title content-title">{{ isEdit ? "Edit Task" : "New Task"}}</h1>
-  
-  
-  </div>
+  <h1 class="mat-display-3 big-title content-title">{{ isEdit ? "Edit Task" : "New Task"}}</h1>
+
+  <form id="register-form" [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+
+    <mat-form-field appearance="fill">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" required color="primary">
+      <mat-error *ngIf="name?.hasError('required')">
+        Name is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Start</mat-label>
+      <input matInput formControlName="start" required color="primary">
+      <mat-error *ngIf="password?.hasError('required')">
+        Start is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+
+    <button mat-raised-button color="primary" class="mat-headline" type="submit" *ngIf="!isLoading; else loadingBlock">
+      <span>Save</span>
+    </button>
+
+    <a mat-raised-button color="primary" class="mat-headline" type="button" *ngIf="!isLoading" routerLink="/dashboard">
+      <span>Cancel</span>
+    </a>
+
+    <ng-template #loadingBlock>
+      <mat-progress-spinner class="button-spinner" [diameter]="60" [color]="'primary'" [mode]="'indeterminate'">
+      </mat-progress-spinner>
+    </ng-template>
+  </form>
+
+
+</div>
