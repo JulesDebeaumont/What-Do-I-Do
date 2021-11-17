@@ -7,6 +7,8 @@ import { DashboardComponent } from './dashboard.component';
 import { TaskListComponent } from './components/task-list/task-list.component';
 import { ActivityListComponent } from './components/activity-list/activity-list.component';
 import { TaskItemComponent } from './components/task-item/task-item.component';
+import { DeleteTaskAlertComponent } from './components/task-item/delete-task-alert/delete-task-alert.component';
+import { InfoTaskAlertComponent } from './components/task-item/info-task-alert/info-task-alert.component';
 // materials
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
@@ -18,9 +20,13 @@ import { MatCardModule } from '@angular/material/card';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialogModule } from '@angular/material/dialog';
-import { DeleteTaskAlertComponent } from './components/task-item/delete-task-alert/delete-task-alert.component';
-import { InfoTaskAlertComponent } from './components/task-item/info-task-alert/info-task-alert.component';
 import { TaskFormComponent } from './components/task-form/task-form.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+// modules
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -45,7 +51,12 @@ import { TaskFormComponent } from './components/task-form/task-form.component';
     MatCardModule,
     MatProgressSpinnerModule,
     MatTooltipModule,
-    MatDialogModule
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ]
 })
 export class DashboardModule { }

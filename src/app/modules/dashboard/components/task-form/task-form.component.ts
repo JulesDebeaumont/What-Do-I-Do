@@ -15,21 +15,20 @@ export class TaskFormComponent implements OnInit {
   isEdit?: boolean;
   isLoading: boolean = false;
   errorMessage!: string;
+  minDate: Date = new Date();
   taskForm: FormGroup = this.formBuilder.group({
     'id': new FormControl(''),
     'name': new FormControl('', [
       Validators.required,
       Validators.minLength(3)
     ]),
-    'start': new FormControl('', [
+    'start': new FormControl(new Date, [
       Validators.required,
     ]),
-    'isActivated': new FormControl('', [
+    'isActivated': new FormControl('true', [
       Validators.required,
     ]),
-    'repeatInterval': new FormControl('', [
-      Validators.required,
-    ]),
+    'isRepeated': new FormControl(''),
     'message': new FormControl('')
   });
 
@@ -96,21 +95,31 @@ export class TaskFormComponent implements OnInit {
       })
   }
 
-  onSubmit(): void {
-    /*
-    if (this.taskForm.valid) {
-      const taskData: object = {
-        name: this.taskForm.get('name')?.value,
-        start: this.taskForm.get('start')?.value,
+  patchTask(task: Task): void {
+    this.isLoading = true;
+    this.taskService.patchTask(task)
+      .subscribe(() => {
+        this.router.navigateByUrl('/dashboard/tasks');
+      }, (error) => {
+        console.log(error.message);
+      }, () => {
+        this.isLoading = false;
+      })
+  }
 
-      };
+  onSubmit(): void {
+    if (this.taskForm.valid) {
+      const taskData: any = this.taskForm.getRawValue();
+      if (!taskData.repeatInterval) {
+        taskData.repeatInterval = 0;
+      }
+
       if (this.isEdit) {
-  
-        this.taskService.patchTask(taskData as Task);
+        this.patchTask(taskData as Task);
+      } else {
+        this.saveTask(taskData as Task);
       }
     }
-    */
-    console.log(this.taskForm.getRawValue());
   }
 
 }

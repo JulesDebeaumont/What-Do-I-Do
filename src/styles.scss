@@ -21,10 +21,16 @@ input:-webkit-autofill {
     display: flex;
     flex-direction: column;
     padding: 30px;
+    margin-top: 30px;
 }
 
 ::-webkit-scrollbar {
     display: none;
+}
+
+.content-section {
+    display: flex;
+    flex-direction: column;
 }
 
 .content-title {
@@ -37,4 +43,16 @@ input:-webkit-autofill {
 
 .content-list {
     display: flex;
+}
+
+.buttons-form-row {
+    display: flex;
+    justify-content: space-around;
+}
+
+.dashboard-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
