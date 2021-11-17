@@ -22,14 +22,15 @@ export class TaskFormComponent implements OnInit {
       Validators.required,
       Validators.minLength(3)
     ]),
-    'start': new FormControl(new Date, [
-      Validators.required,
+    'start': new FormControl(new Date(), [
+      Validators.required
     ]),
+    'isRepeated': new FormControl(false),
+    'repeatInterval': new FormControl(''),
+    'message': new FormControl(''),
     'isActivated': new FormControl('true', [
-      Validators.required,
-    ]),
-    'isRepeated': new FormControl(''),
-    'message': new FormControl('')
+      Validators.required
+    ])
   });
 
   get name(): AbstractControl | null {
@@ -40,6 +41,9 @@ export class TaskFormComponent implements OnInit {
   }
   get isActivated(): AbstractControl | null {
     return this.taskForm.get('isActivated');
+  }
+  get isRepeated(): AbstractControl | null {
+    return this.taskForm.get('isRepeated');
   }
   get repeatInterval(): AbstractControl | null {
     return this.taskForm.get('repeatInterval');
@@ -110,10 +114,9 @@ export class TaskFormComponent implements OnInit {
   onSubmit(): void {
     if (this.taskForm.valid) {
       const taskData: any = this.taskForm.getRawValue();
-      if (!taskData.repeatInterval) {
+      if (!taskData.isRepeated || !taskData.repeatInterval) {
         taskData.repeatInterval = 0;
       }
-
       if (this.isEdit) {
         this.patchTask(taskData as Task);
       } else {

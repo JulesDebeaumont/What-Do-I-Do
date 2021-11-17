@@ -46,6 +46,7 @@ input:-webkit-autofill {
 }
 
 .buttons-form-row {
+    margin-top: 30px;
     display: flex;
     justify-content: space-around;
 }
@@ -55,4 +56,23 @@ input:-webkit-autofill {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.dashboard-form-inputs {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+}
+
+.dashboard-form-inputs > *{
+    padding-bottom: 20px;
+}
+
+.radio-button-form {
+    display: flex;
+    justify-content: space-around;
+}
+
+mat-radio-button {
+    margin: 40px 15px 20px 15px;
 }
