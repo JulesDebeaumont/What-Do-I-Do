@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { fadeInAnimation } from 'src/app/animations/routeAnimation';
+import { ActivityService } from 'src/app/services/activity.service';
 
 @Component({
   selector: 'app-activity-list',
@@ -9,9 +10,12 @@ import { fadeInAnimation } from 'src/app/animations/routeAnimation';
 })
 export class ActivityListComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private activityService: ActivityService
+  ) { }
 
   ngOnInit(): void {
+    this.activityService.getAllUserTasks();
   }
 
 }
