@@ -1,3 +1,34 @@
 <div class="dashboard-page-content">
-    <h1>activity hop hop hop!!</h1>
-</div>
+    <h1 class="mat-display-3 big-title content-title">Activity</h1>
+  
+    <div class="content-section">
+      <h2 class="mat-display-1 big-title content-small-title">My activities</h2>
+  
+      <ul class="content-list" *ngIf="allUserActivities; else loadingBlock">
+        <li *ngFor="let activity of allUserActivities" class="card">
+          <app-activity-item [activity]="activity"></app-activity-item>
+        </li>
+  
+        <li class="activity-card">
+          <mat-card [class.card-disabled]="true" class="card-content">
+            <mat-card-content>
+              <button mat-button matTooltip="Create a new activity" routerLink="/dashboard/activity/new">
+                <mat-icon class="dashboard-navlist-icon">add</mat-icon>
+              </button>
+            </mat-card-content>
+          </mat-card>
+        </li>
+      </ul>
+  
+      <ng-template #loadingBlock>
+        <mat-progress-spinner class="button-spinner" [diameter]="60" [color]="'primary'" [mode]="'indeterminate'">
+        </mat-progress-spinner>
+      </ng-template>
+    </div>
+  
+    <div class="content-section">
+      <h2 class="mat-display-1 big-title content-small-title">Pick a random task</h2>
+      <div>Random task goes here</div>
+    </div>
+  
+  </div>
