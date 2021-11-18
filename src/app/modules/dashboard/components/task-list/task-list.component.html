@@ -6,7 +6,7 @@
 
     <ul class="content-list" *ngIf="allUserTasks; else loadingBlock">
       <li *ngFor="let task of allUserTasks" class="task-card">
-        <app-task-item [task]="task"></app-task-item>
+        <app-task-item [task]="task" (deleteTaskEvent)="filterAllTasks($event)"></app-task-item>
       </li>
 
       <li class="task-card">

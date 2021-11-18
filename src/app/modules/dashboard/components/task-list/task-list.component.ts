@@ -33,4 +33,9 @@ export class TaskListComponent implements OnInit {
       });
   }
 
+  filterAllTasks(deletedTask: Task): void {
+    this.allUserTasks = this.allUserTasks.filter((task: Task) => (
+      task !== deletedTask
+    ))
+  }
 }

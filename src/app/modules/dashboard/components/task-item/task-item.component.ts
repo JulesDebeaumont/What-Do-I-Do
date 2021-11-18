@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { TaskService } from 'src/app/services/task.service';
 import { MatDialog } from '@angular/material/dialog';
 // models
@@ -13,24 +13,22 @@ import { InfoTaskAlertComponent } from './info-task-alert/info-task-alert.compon
   templateUrl: './task-item.component.html',
   styleUrls: ['./task-item.component.scss']
 })
-export class TaskItemComponent implements OnInit {
+export class TaskItemComponent {
 
   @Input() task!: Task;
   isLoading: boolean = false;
   errorMessageToggle?: string;
+
+  @Output() deleteTaskEvent = new EventEmitter<Task>();
 
   constructor(
     private taskService: TaskService,
     private dialog: MatDialog
   ) { }
 
-  ngOnInit(): void {
-  }
-
   toggleTaskActivation(task: Task): void {
     const toggledTask = { ...task, isActivated: !task.isActivated };
     this.isLoading = true;
-    console.log("true")
     this.taskService.patchTask(toggledTask)
       .subscribe(() => {
         task.isActivated = !task.isActivated;
@@ -51,8 +49,8 @@ export class TaskItemComponent implements OnInit {
       .subscribe((result) => {
         if (result === "delete") {
           this.taskService.deleteTask(task.id)
-          .subscribe((response) => {
-            console.log(response);
+          .subscribe(() => {
+            this.deleteTaskEvent.emit(task);
           })
         }
       });
