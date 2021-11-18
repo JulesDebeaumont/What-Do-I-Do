@@ -11,7 +11,7 @@ import { ActivityService } from 'src/app/services/activity.service';
 export class ActivityListComponent implements OnInit {
 
   constructor(
-    private activityService: ActivityService
+    public activityService: ActivityService
   ) { }
 
   ngOnInit(): void {

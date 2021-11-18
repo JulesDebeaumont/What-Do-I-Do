@@ -4,8 +4,8 @@
     <div class="content-section">
       <h2 class="mat-display-1 big-title content-small-title">My activities</h2>
   
-      <ul class="content-list" *ngIf="allUserActivities; else loadingBlock">
-        <li *ngFor="let activity of allUserActivities" class="card">
+      <ul class="content-list" *ngIf="activityService.allUserActivities; else loadingBlock">
+        <li *ngFor="let activity of activityService.allUserActivities" class="card">
           <app-activity-item [activity]="activity"></app-activity-item>
         </li>
   
