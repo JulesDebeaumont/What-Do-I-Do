@@ -15,7 +15,7 @@ export class ActivityListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.activityService.getAllUserTasks();
+    this.activityService.getAllUserActivities();
   }
 
 }

@@ -22,7 +22,7 @@ export class ActivityService {
       'Content-Type': 'application/merge-patch+json'
     })
   }
-  allUserActivities! : Activity[];
+  allUserActivities!: Activity[];
   errorMessage!: string;
   isLoading: boolean = false;
 
@@ -32,53 +32,52 @@ export class ActivityService {
   ) { }
 
 
-   /**
-   * GET - Get all activities by user
+  /**
+  * GET - Get all activities by user
+  */
+  getAllUserActivities() {
+    return this.http.get<Activity[]>(environment.apiUrl + `/users/${this.auth.getUserId()}${this.apiActivityUrl}`, this.httpOptions)
+      .subscribe((response: any) => {
+        this.allUserActivities = response.activities;
+      }, (error) => {
+        if (error.status === 0) {
+          this.errorMessage = 'An internal error has occured';
+        } else {
+          this.errorMessage = `An error has occured: ${error.message}`;
+        }
+      }
+      )
+  }
+
+
+  /**
+  * GET - Get activity
+  */
+  getActivity(activityId: number): Observable<any> {
+    return this.http.get<Activity>(environment.apiUrl + `${this.apiActivityUrl}/${activityId}`, this.httpOptions);
+  }
+
+
+  /**
+   * POST - Post activity
    */
-    getAllUserTasks(): Observable<any> {
-      return this.http.get<Activity[]>(environment.apiUrl + `/users/${this.auth.getUserId()}${this.apiActivityUrl}`, this.httpOptions)
-        .pipe(
-          tap((response: any) =>  {
-            this.allUserActivities = response.activities;
-          }, (error) => {
-            if (error.status === 0) {
-              this.errorMessage = 'An internal error has occured';
-            } else {
-              this.errorMessage = `An error has occured: ${error.message}`;
-            }
-          })
-        )
-    }
-  
-  
-    /**
-    * GET - Get activity
-    */
-    getTask(activityId: number): Observable<any> {
-      return this.http.get<Activity>(environment.apiUrl + `${this.apiActivityUrl}/${activityId}`, this.httpOptions);
-    }
-  
-  
-    /**
-     * POST - Post activity
-     */
-    postTask(taskData: Activity): Observable<any> {
-      return this.http.post<Activity>(environment.apiUrl + `${this.apiActivityUrl}`, taskData, this.httpOptions);
-    }
-  
-  
-    /**
-    * PATCH - Patch activity
-    */
-    patchTask(taskData: Activity): Observable<any> {
-      return this.http.patch<Activity>(environment.apiUrl + `${this.apiActivityUrl}/${taskData.id}`, taskData, this.httpOptionsPatch);
-    }
-  
-  
-    /**
-    * DELETE - Delete activity
-    */
-    deleteTask(activityId: number): Observable<any> {
-      return this.http.delete<Activity>(environment.apiUrl + `${this.apiActivityUrl}/${activityId}`, this.httpOptions);
-    }
+  postActivity(activityData: Activity): Observable<any> {
+    return this.http.post<Activity>(environment.apiUrl + `${this.apiActivityUrl}`, activityData, this.httpOptions);
+  }
+
+
+  /**
+  * PATCH - Patch activity
+  */
+  patchActivity(activityData: Activity): Observable<any> {
+    return this.http.patch<Activity>(environment.apiUrl + `${this.apiActivityUrl}/${activityData.id}`, activityData, this.httpOptionsPatch);
+  }
+
+
+  /**
+  * DELETE - Delete activity
+  */
+  deleteActivity(activityId: number): Observable<any> {
+    return this.http.delete<Activity>(environment.apiUrl + `${this.apiActivityUrl}/${activityId}`, this.httpOptions);
+  }
 }
