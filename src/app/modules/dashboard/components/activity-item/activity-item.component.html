@@ -1,10 +1,8 @@
-<mat-card class="card-content">
-    <mat-card-header class="task-header">
-      <mat-card-title>{{task.name}}</mat-card-title>
-      <mat-card-subtitle>ok</mat-card-subtitle>
+<mat-card class="activity-content">
+    <mat-card-header class="activity-header">
+      <mat-card-title>{{activity.name}}</mat-card-title>
+      <mat-card-subtitle>{{activity.duration}} minutes</mat-card-subtitle> <!-- TODO convert unit-->
     </mat-card-header>
-    <mat-card-content>
-    </mat-card-content>
     <mat-card-actions>
       <a mat-button routerLink="/dashboard/activity/{{activity.id}}/edit" matTooltip="Edit">
         <mat-icon class="dashboard-navlist-icon">edit</mat-icon>

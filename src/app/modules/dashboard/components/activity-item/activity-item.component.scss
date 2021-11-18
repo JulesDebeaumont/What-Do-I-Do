@@ -1,0 +1,32 @@
+.activity-header {
+    margin-bottom: 30px;
+}
+
+.activity-content {
+    background-color: rgba(100, 100, 100, 0.479);
+    width: 150px;
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    transition: all 0.2s;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.activity-content:hover {
+    background-color: rgba(131, 131, 131, 0.479);
+}
+
+.activity-disabled {
+    background-color: rgba(39, 39, 39, 0.322);
+}
+
+.activity-disabled:hover {
+    background-color: rgba(65, 65, 65, 0.322);
+}
+
+.mat-card-actions .mat-button {
+    margin: 0;
+}

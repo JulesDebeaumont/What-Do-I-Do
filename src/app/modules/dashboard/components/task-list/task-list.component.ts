@@ -5,6 +5,8 @@ import { TaskService } from 'src/app/services/task.service';
 // models
 import { Task } from 'src/app/models/task.model';
 
+// NO STORE STYLE
+
 @Component({
   selector: 'app-task-list',
   templateUrl: './task-list.component.html',

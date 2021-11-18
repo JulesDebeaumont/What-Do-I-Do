@@ -4,7 +4,7 @@
     <mat-card-subtitle>{{task.start | date}}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <div *ngIf="task.repeatInterval > 0; else noRepeat">Repeat: Every {{task.repeatInterval}} day(s)</div>
+    <div *ngIf="task.repeatInterval > 0; else noRepeat">Repeat: Every {{task.repeatInterval}} day(s)</div> <!-- TODO convert unit-->
     <ng-template #noRepeat>
       <div>Repeat: Never</div>
     </ng-template>

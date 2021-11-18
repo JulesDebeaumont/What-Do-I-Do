@@ -5,12 +5,12 @@
       <h2 class="mat-display-1 big-title content-small-title">My activities</h2>
   
       <ul class="content-list" *ngIf="activityService.allUserActivities; else loadingBlock">
-        <li *ngFor="let activity of activityService.allUserActivities" class="card">
+        <li *ngFor="let activity of activityService.allUserActivities" class="activity-card">
           <app-activity-item [activity]="activity"></app-activity-item>
         </li>
   
         <li class="activity-card">
-          <mat-card [class.card-disabled]="true" class="card-content">
+          <mat-card [class.card-disabled]="true" class="activity-content">
             <mat-card-content>
               <button mat-button matTooltip="Create a new activity" routerLink="/dashboard/activity/new">
                 <mat-icon class="dashboard-navlist-icon">add</mat-icon>
@@ -19,6 +19,8 @@
           </mat-card>
         </li>
       </ul>
+
+      <!-- TODO handle error allActivities -->
   
       <ng-template #loadingBlock>
         <mat-progress-spinner class="button-spinner" [diameter]="60" [color]="'primary'" [mode]="'indeterminate'">

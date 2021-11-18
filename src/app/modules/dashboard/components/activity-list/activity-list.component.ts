@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { fadeInAnimation } from 'src/app/animations/routeAnimation';
 import { ActivityService } from 'src/app/services/activity.service';
 
+// SLICE STYLE
+
 @Component({
   selector: 'app-activity-list',
   templateUrl: './activity-list.component.html',

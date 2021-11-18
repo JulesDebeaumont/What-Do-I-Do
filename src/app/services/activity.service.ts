@@ -1,7 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Activity } from '../models/activity.model';
 import { AuthService } from './auth.service';
@@ -35,11 +34,14 @@ export class ActivityService {
   /**
   * GET - Get all activities by user
   */
-  getAllUserActivities() {
-    return this.http.get<Activity[]>(environment.apiUrl + `/users/${this.auth.getUserId()}${this.apiActivityUrl}`, this.httpOptions)
+  getAllUserActivities(): void {
+    this.isLoading = true;
+    this.http.get<Activity[]>(environment.apiUrl + `/users/${this.auth.getUserId()}${this.apiActivityUrl}`, this.httpOptions)
       .subscribe((response: any) => {
         this.allUserActivities = response.activities;
+        this.isLoading = false;
       }, (error) => {
+        this.isLoading = false;
         if (error.status === 0) {
           this.errorMessage = 'An internal error has occured';
         } else {
