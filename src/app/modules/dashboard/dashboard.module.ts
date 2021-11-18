@@ -31,6 +31,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 // modules
 import { ReactiveFormsModule } from '@angular/forms';
 import { ActivityItemComponent } from './components/activity-item/activity-item.component';
+import { ActivityFormComponent } from './components/activity-form/activity-form.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { ActivityItemComponent } from './components/activity-item/activity-item.
     DeleteTaskAlertComponent,
     InfoTaskAlertComponent,
     TaskFormComponent,
-    ActivityItemComponent
+    ActivityItemComponent,
+    ActivityFormComponent
   ],
   imports: [
     CommonModule,

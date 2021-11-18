@@ -6,6 +6,7 @@ import { DashboardComponent } from './dashboard.component';
 import { TaskListComponent } from './components/task-list/task-list.component';
 import { ActivityListComponent } from './components/activity-list/activity-list.component';
 import { TaskFormComponent } from './components/task-form/task-form.component';
+import { ActivityFormComponent } from './components/activity-form/activity-form.component';
 
 
 
@@ -25,6 +26,12 @@ const routes: Routes = [
       },
       {
         path: 'activities', component: ActivityListComponent
+      },
+      {
+        path: 'activities/new', component: ActivityFormComponent
+      },
+      {
+        path: 'activities/:id/edit', component: ActivityFormComponent
       }
     ]
   }
