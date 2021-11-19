@@ -7,7 +7,7 @@
       <a mat-button routerLink="/dashboard/activities/{{activity.id}}/edit" matTooltip="Edit">
         <mat-icon class="dashboard-navlist-icon">edit</mat-icon>
       </a>
-      <button mat-button  matTooltip="Delete">
+      <button mat-button matTooltip="Delete" (click)="deleteActivityWithAlert(activity)">
         <mat-icon class="dashboard-navlist-icon">delete</mat-icon>
       </button>
     </mat-card-actions>

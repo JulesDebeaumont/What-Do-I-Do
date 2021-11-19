@@ -79,7 +79,12 @@ export class ActivityService {
   /**
   * DELETE - Delete activity
   */
-  deleteActivity(activityId: number): Observable<any> {
-    return this.http.delete<Activity>(environment.apiUrl + `${this.apiActivityUrl}/${activityId}`, this.httpOptions);
+  deleteActivity(activityId: number):void {
+    this.http.delete<Activity>(environment.apiUrl + `${this.apiActivityUrl}/${activityId}`, this.httpOptions)
+      .subscribe(() => {
+        this.allUserActivities = this.allUserActivities.filter((activity: Activity) => (
+          activity.id !== activityId
+        ))
+      })
   }
 }
