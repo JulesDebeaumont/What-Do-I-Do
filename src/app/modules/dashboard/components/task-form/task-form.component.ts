@@ -18,6 +18,7 @@ export class TaskFormComponent implements OnInit {
   isSubmitted: boolean = false; // for patch/post User
   errorMessage?: string;
   minDate: Date = new Date();
+  submitRedirectUrl: string = "/dashboard";
   taskForm: FormGroup = this.formBuilder.group({
     'id': new FormControl(''),
     'name': new FormControl('', [
@@ -110,7 +111,7 @@ export class TaskFormComponent implements OnInit {
     this.isSubmitted = true;
     this.taskService.postTask(task)
       .subscribe(() => {
-        this.router.navigateByUrl('/dashboard');
+        this.router.navigateByUrl(this.submitRedirectUrl);
       }, (error) => {
         console.log(error.message);
         this.errorMessage = error.message;
@@ -124,7 +125,7 @@ export class TaskFormComponent implements OnInit {
     this.isSubmitted = true;
     this.taskService.patchTask(task)
       .subscribe(() => {
-        this.router.navigateByUrl('/dashboard');
+        this.router.navigateByUrl(this.submitRedirectUrl);
       }, (error) => {
         console.log(error.message);
         this.errorMessage = error.message;

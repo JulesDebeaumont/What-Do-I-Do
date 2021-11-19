@@ -1,1 +1,53 @@
-<p>activity-form works!</p>
+<div class="dashboard-page-content">
+    <h1 class="mat-display-3 big-title content-title">{{ isEdit ? "Edit Activity" : "New Activity"}}</h1>
+  
+    <div class="content-section">
+      <div class="dashboard-form">
+        <div *ngIf="!isLoading; else isLoadingBlock">
+          <form [formGroup]="activityForm" (ngSubmit)="onSubmit()" class="dashboard-form-inputs">
+  
+            <mat-form-field appearance="fill">
+              <mat-label>Name</mat-label>
+              <input matInput formControlName="name" required color="primary">
+              <mat-error *ngIf="name?.hasError('required')">
+                Name is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+  
+            <mat-form-field appearance="fill">
+              <mat-label>Duration</mat-label>
+              <input matInput formControlName="duration" required color="primary" type="number">
+              <span matSuffix>minutes</span>
+              <mat-error *ngIf="duration?.hasError('required')">
+                Name is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+  
+            <div *ngIf="errorMessage">{{errorMessage}}</div><!-- TODO handle error message-->
+  
+            <div class="buttons-form-row">
+              <a mat-button color="accent" class="mat-headline" type="button" *ngIf="!isLoading" [routerLink]="submitRedirectUrl">
+                <span>Cancel</span>
+              </a>
+  
+              <button mat-raised-button color="primary" class="mat-headline" type="submit"
+                *ngIf="!isSubmitted; else submitedBlock">
+                <span>Save</span>
+              </button>
+  
+              <ng-template #submitedBlock>
+                <mat-progress-spinner class="button-spinner" [diameter]="60" [color]="'primary'" [mode]="'indeterminate'">
+                </mat-progress-spinner>
+              </ng-template>
+            </div>
+  
+  
+          </form>
+        </div>
+        <ng-template #isLoadingBlock>
+          <mat-progress-spinner class="button-spinner" [diameter]="250" [color]="'primary'" [mode]="'indeterminate'">
+          </mat-progress-spinner>
+        </ng-template>
+      </div>
+    </div>
+  </div>
