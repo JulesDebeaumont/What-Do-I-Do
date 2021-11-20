@@ -33,6 +33,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ActivityItemComponent } from './components/activity-item/activity-item.component';
 import { ActivityFormComponent } from './components/activity-form/activity-form.component';
 import { DeleteActivityAlertComponent } from './components/activity-item/delete-activity-alert/delete-activity-alert.component';
+import { TicTacToeComponent } from './components/tic-tac-toe/tic-tac-toe.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { DeleteActivityAlertComponent } from './components/activity-item/delete-
     TaskFormComponent,
     ActivityItemComponent,
     ActivityFormComponent,
-    DeleteActivityAlertComponent
+    DeleteActivityAlertComponent,
+    TicTacToeComponent
   ],
   imports: [
     CommonModule,

@@ -7,6 +7,7 @@ import { TaskListComponent } from './components/task-list/task-list.component';
 import { ActivityListComponent } from './components/activity-list/activity-list.component';
 import { TaskFormComponent } from './components/task-form/task-form.component';
 import { ActivityFormComponent } from './components/activity-form/activity-form.component';
+import { TicTacToeComponent } from './components/tic-tac-toe/tic-tac-toe.component';
 
 
 
@@ -32,6 +33,9 @@ const routes: Routes = [
       },
       {
         path: 'activities/:id/edit', component: ActivityFormComponent
+      },
+      {
+        path: 'tic-tac-toe', component: TicTacToeComponent
       }
     ]
   }
